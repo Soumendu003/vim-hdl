@@ -626,6 +626,7 @@ hi def link tcltkPackConfSwitch	Special
 hi def link tcltkMaths		Special
 hi def link tcltkNamespaceSwitch	Special
 hi def link tcltkWidgetSwitch	Special
+hi def link upfOption		Special
 hi def link tcltkPackConfColor	Identifier
 hi def link tclVarRef		Identifier
 
