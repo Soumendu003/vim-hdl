@@ -154,244 +154,242 @@ syn keyword upfCommand          query_upf2hdl_vct
 syn keyword upfCommand          query_use_interface_cell
 
 " UPF options:
-syn keyword upfOption contained     define_func_type
-syn keyword upfOption contained     is_macro_cell
-syn keyword upfOption contained     literal_supply
-syn keyword upfOption contained     range
-syn keyword upfOption contained     ack_delay
-syn keyword upfOption contained     save_function
-syn keyword upfOption contained     isolation_prefix
-syn keyword upfOption contained     name_prefix
-syn keyword upfOption contained     object_list
-syn keyword upfOption contained     function
-syn keyword upfOption contained     inverter_supply_set
-syn keyword upfOption contained     off_state
-syn keyword upfOption contained     leaf_only
-syn keyword upfOption contained     applies_to_boundary
-syn keyword upfOption contained     force_shift
-syn keyword upfOption contained     ground_switchable
-syn keyword upfOption contained     implicit_logic_suffix
-syn keyword upfOption contained     use_equivalence
-syn keyword upfOption contained     supply_set
-syn keyword upfOption contained     complete
-syn keyword upfOption contained     reuse
-syn keyword upfOption contained     isolation_signal
-syn keyword upfOption contained     params
-syn keyword upfOption contained     sink_off_clamp
-syn keyword upfOption contained     isolation_power_net
-syn keyword upfOption contained     on_state
-syn keyword upfOption contained     save_condition
-syn keyword upfOption contained     class
-syn keyword upfOption contained     inst_type
-syn keyword upfOption contained     element
-syn keyword upfOption contained     default
-syn keyword upfOption contained     primary_power_net
-syn keyword upfOption contained     no_enable
-syn keyword upfOption contained     force_isolation
-syn keyword upfOption contained     repeater_supply_set
-syn keyword upfOption contained     input_power_pin
-syn keyword upfOption contained     simstate
-syn keyword upfOption contained     is_isolated
-syn keyword upfOption contained     location
-syn keyword upfOption contained     implicit_supply_prefix
-syn keyword upfOption contained     virtual
-syn keyword upfOption contained     exclude_elements
-syn keyword upfOption contained     gate_bias_pin
-syn keyword upfOption contained     implicit_supply_suffix
-syn keyword upfOption contained     handle
-syn keyword upfOption contained     aux_enables
-syn keyword upfOption contained     feedthrough
-syn keyword upfOption contained     arch
-syn keyword upfOption contained     pg_type
-syn keyword upfOption contained     map
-syn keyword upfOption contained     applies_to_source_off_clamp
-syn keyword upfOption contained     property
-syn keyword upfOption contained     ground
-syn keyword upfOption contained     regexp
-syn keyword upfOption contained     port_map
-syn keyword upfOption contained     receiver_supply
-syn keyword upfOption contained     lib_model_name
-syn keyword upfOption contained     valid_location
-syn keyword upfOption contained     conn
-syn keyword upfOption contained     retention_power_net
-syn keyword upfOption contained     multi_stage
-syn keyword upfOption contained     level_shift_suffix
-syn keyword upfOption contained     bind_to
-syn keyword upfOption contained     isolation_supply_set
-syn keyword upfOption contained     unconnected
-syn keyword upfOption contained     parameters
-syn keyword upfOption contained     always_on_pins
-syn keyword upfOption contained     interchangeable
-syn keyword upfOption contained     output_power_pin
-syn keyword upfOption contained     reference_gnd
-syn keyword upfOption contained     subdomains
-syn keyword upfOption contained     available_supplies
-syn keyword upfOption contained     vcms
-syn keyword upfOption contained     restore_signal
-syn keyword upfOption contained     attribute
-syn keyword upfOption contained     scope
-syn keyword upfOption contained     restore_check
-syn keyword upfOption contained     full_on_tools
-syn keyword upfOption contained     power_switch
-syn keyword upfOption contained     exclude_domains
-syn keyword upfOption contained     stage_1_enable
-syn keyword upfOption contained     contents
-syn keyword upfOption contained     pin_groups
-syn keyword upfOption contained     isolation_sense
-syn keyword upfOption contained     domains
-syn keyword upfOption contained     ground_output_voltage_range
-syn keyword upfOption contained     related_power_port
-syn keyword upfOption contained     assert_r_mutex
-syn keyword upfOption contained     controlling_domain
-syn keyword upfOption contained     atomic
-syn keyword upfOption contained     always_on_components
-syn keyword upfOption contained     rule
-syn keyword upfOption contained     cell_type
-syn keyword upfOption contained     switch_type
-syn keyword upfOption contained     stage_2_enable
-syn keyword upfOption contained     is_hard_macro
-syn keyword upfOption contained     retention_supply_set
-syn keyword upfOption contained     instance
-syn keyword upfOption contained     power_switchable
-syn keyword upfOption contained     input_supply_set
-syn keyword upfOption contained     related_bias_ports
-syn keyword upfOption contained     output_supply_port
-syn keyword upfOption contained     source
-syn keyword upfOption contained     hdl_type
-syn keyword upfOption contained     input_supply_port
-syn keyword upfOption contained     reconnect
-syn keyword upfOption contained     enable
-syn keyword upfOption contained     related_ground_port
-syn keyword upfOption contained     no_shift
-syn keyword upfOption contained     power_domains
-syn keyword upfOption contained     update_any
-syn keyword upfOption contained     save_signal
-syn keyword upfOption contained     internal_supply_set
-syn keyword upfOption contained     supply
-syn keyword upfOption contained     output_ground_pin
-syn keyword upfOption contained     models
-syn keyword upfOption contained     group
-syn keyword upfOption contained     restore_condition
-syn keyword upfOption contained     switch_cell_type
-syn keyword upfOption contained     for
-syn keyword upfOption contained     save_check
-syn keyword upfOption contained     connect
-syn keyword upfOption contained     cells
-syn keyword upfOption contained     lib_cell_type
-syn keyword upfOption contained     ack_polarity
-syn keyword upfOption contained     is_soft_macro
-syn keyword upfOption contained     related_power_pin
-syn keyword upfOption contained     sets
-syn keyword upfOption contained     retention_ground_net
-syn keyword upfOption contained     hold_check
-syn keyword upfOption contained     description
-syn keyword upfOption contained     related_ground_pin
-syn keyword upfOption contained     transitive
-syn keyword upfOption contained     paired
-syn keyword upfOption contained     ignore_case
-syn keyword upfOption contained     isolation_suffix
-syn keyword upfOption contained     object_type
-syn keyword upfOption contained     async_clamp_lib_cells
-syn keyword upfOption contained     supplies
-syn keyword upfOption contained     level_shift_prefix
-syn keyword upfOption contained     leaf
-syn keyword upfOption contained     nets
-syn keyword upfOption contained     illegal
-syn keyword upfOption contained     power
-syn keyword upfOption contained     clamp_value
-syn keyword upfOption contained     no_retention
-syn keyword upfOption contained     assert_s_mutex
-syn keyword upfOption contained     all
-syn keyword upfOption contained     is_analog
-syn keyword upfOption contained     clock_clamp_lib_cells
-syn keyword upfOption contained     no_isolation
-syn keyword upfOption contained     primary_ground_net
-syn keyword upfOption contained     control_expr
-syn keyword upfOption contained     state
-syn keyword upfOption contained     driver_supply
-syn keyword upfOption contained     legal
-syn keyword upfOption contained     conversion_direction
-syn keyword upfOption contained     name_suffix
-syn keyword upfOption contained     force_function
-syn keyword upfOption contained     strategy
-syn keyword upfOption contained     pattern
-syn keyword upfOption contained     non_leaf
-syn keyword upfOption contained     is_leaf_cell
-syn keyword upfOption contained     control_port
-syn keyword upfOption contained     port
-syn keyword upfOption contained     isolation_ground_net
-syn keyword upfOption contained     sink
-syn keyword upfOption contained     repeater_supply
-syn keyword upfOption contained     boundary_supplies
-syn keyword upfOption contained     file
-syn keyword upfOption contained     update
-syn keyword upfOption contained     applies_to_sink_off_clamp
-syn keyword upfOption contained     output_supply_set
-syn keyword upfOption contained     applies_to_clamp
-syn keyword upfOption contained     diff_supply_only
-syn keyword upfOption contained     clamp_cell
-syn keyword upfOption contained     ground_input_voltage_range
-syn keyword upfOption contained     restore_function
-syn keyword upfOption contained     exclude_ports
-syn keyword upfOption contained     stage_1_output
-syn keyword upfOption contained     input_voltage_range
-syn keyword upfOption contained     off_tools
-syn keyword upfOption contained     table
-syn keyword upfOption contained     implicit_logic_prefix
-syn keyword upfOption contained     bypass_enable
-syn keyword upfOption contained     lib
-syn keyword upfOption contained     hide_globals
-syn keyword upfOption contained     input_ground_pin
-syn keyword upfOption contained     to
-syn keyword upfOption contained     type
-syn keyword upfOption contained     version
-syn keyword upfOption contained     no_elements
-syn keyword upfOption contained     rail_connection
-syn keyword upfOption contained     retention_check
-syn keyword upfOption contained     isolated_pins
-syn keyword upfOption contained     vct
-syn keyword upfOption contained     help
-syn keyword upfOption contained     ports
-syn keyword upfOption contained     pst
-syn keyword upfOption contained     output_voltage_range
-syn keyword upfOption contained     resolve
-syn keyword upfOption contained     function_only
-syn keyword upfOption contained     retention_condition
-syn keyword upfOption contained     error_state
-syn keyword upfOption contained     threshold
-syn keyword upfOption contained     direction
-syn keyword upfOption contained     model
-syn keyword upfOption contained     use_functional_equivalence
-syn keyword upfOption contained     detailed
-syn keyword upfOption contained     applies_to
-syn keyword upfOption contained     use_retention_as_primary
-syn keyword upfOption contained     assert_rs_mutex
-syn keyword upfOption contained     expand
-syn keyword upfOption contained     relative_to
-syn keyword upfOption contained     all_equivalent
-syn keyword upfOption contained     object
-syn keyword upfOption contained     field
-syn keyword upfOption contained     from
-syn keyword upfOption contained     elements
-syn keyword upfOption contained     data_pins
-syn keyword upfOption contained     supply_map
-syn keyword upfOption contained     simulation_only
-syn keyword upfOption contained     stage_2_output
-syn keyword upfOption contained     transition
-syn keyword upfOption contained     ack_port
-syn keyword upfOption contained     pins
-syn keyword upfOption contained     include_scope
-syn keyword upfOption contained     exact
-syn keyword upfOption contained     domain
-syn keyword upfOption contained     traverse_macros
-syn keyword upfOption contained     on_partial_state
-syn keyword upfOption contained     non_dedicated
-syn keyword upfOption contained     lib_cells
-syn keyword upfOption contained     source_off_clamp
-syn keyword upfOption contained     is_supply
-syn keyword upfOption contained     module
-syn keyword upfOption contained     retention_purpose
-
+syn match   upfOption               '\-pattern'
+syn match   upfOption               '\-on_state'
+syn match   upfOption               '\-switch_cell_type'
+syn match   upfOption               '\-off_state'
+syn match   upfOption               '\-inst_type'
+syn match   upfOption               '\-retention_check'
+syn match   upfOption               '\-data_pins'
+syn match   upfOption               '\-element'
+syn match   upfOption               '\-force_isolation'
+syn match   upfOption               '\-range'
+syn match   upfOption               '\-off_tools'
+syn match   upfOption               '\-implicit_logic_prefix'
+syn match   upfOption               '\-related_bias_ports'
+syn match   upfOption               '\-elements'
+syn match   upfOption               '\-connect'
+syn match   upfOption               '\-non_dedicated'
+syn match   upfOption               '\-bypass_enable'
+syn match   upfOption               '\-class'
+syn match   upfOption               '\-update_any'
+syn match   upfOption               '\-output_ground_pin'
+syn match   upfOption               '\-default'
+syn match   upfOption               '\-model'
+syn match   upfOption               '\-port_map'
+syn match   upfOption               '\-contents'
+syn match   upfOption               '\-sink'
+syn match   upfOption               '\-hdl_type'
+syn match   upfOption               '\-include_scope'
+syn match   upfOption               '\-is_soft_macro'
+syn match   upfOption               '\-lib_cell_type'
+syn match   upfOption               '\-power_switchable'
+syn match   upfOption               '\-clock_clamp_lib_cells'
+syn match   upfOption               '\-use_functional_equivalence'
+syn match   upfOption               '\-transition'
+syn match   upfOption               '\-applies_to'
+syn match   upfOption               '\-on_partial_state'
+syn match   upfOption               '\-supply'
+syn match   upfOption               '\-force_function'
+syn match   upfOption               '\-all_equivalent'
+syn match   upfOption               '\-output_power_pin'
+syn match   upfOption               '\-ack_polarity'
+syn match   upfOption               '\-name_prefix'
+syn match   upfOption               '\-retention_power_net'
+syn match   upfOption               '\-level_shift_prefix'
+syn match   upfOption               '\-related_ground_port'
+syn match   upfOption               '\-ack_delay'
+syn match   upfOption               '\-clamp_cell'
+syn match   upfOption               '\-implicit_logic_suffix'
+syn match   upfOption               '\-is_supply'
+syn match   upfOption               '\-version'
+syn match   upfOption               '\-inverter_supply_set'
+syn match   upfOption               '\-save_function'
+syn match   upfOption               '\-no_elements'
+syn match   upfOption               '\-cells'
+syn match   upfOption               '\-applies_to_sink_off_clamp'
+syn match   upfOption               '\-pg_type'
+syn match   upfOption               '\-description'
+syn match   upfOption               '\-control_port'
+syn match   upfOption               '\-is_leaf_cell'
+syn match   upfOption               '\-threshold'
+syn match   upfOption               '\-gate_bias_pin'
+syn match   upfOption               '\-table'
+syn match   upfOption               '\-always_on_components'
+syn match   upfOption               '\-detailed'
+syn match   upfOption               '\-ground_input_voltage_range'
+syn match   upfOption               '\-object_type'
+syn match   upfOption               '\-input_voltage_range'
+syn match   upfOption               '\-hide_globals'
+syn match   upfOption               '\-transitive'
+syn match   upfOption               '\-reference_gnd'
+syn match   upfOption               '\-ground'
+syn match   upfOption               '\-leaf_only'
+syn match   upfOption               '\-supply_set'
+syn match   upfOption               '\-is_hard_macro'
+syn match   upfOption               '\-isolation_ground_net'
+syn match   upfOption               '\-repeater_supply'
+syn match   upfOption               '\-property'
+syn match   upfOption               '\-conn'
+syn match   upfOption               '\-map'
+syn match   upfOption               '\-boundary_supplies'
+syn match   upfOption               '\-reuse'
+syn match   upfOption               '\-scope'
+syn match   upfOption               '\-driver_supply'
+syn match   upfOption               '\-function_only'
+syn match   upfOption               '\-object'
+syn match   upfOption               '\-strategy'
+syn match   upfOption               '\-rule'
+syn match   upfOption               '\-exclude_domains'
+syn match   upfOption               '\-no_retention'
+syn match   upfOption               '\-implicit_supply_prefix'
+syn match   upfOption               '\-bind_to'
+syn match   upfOption               '\-input_supply_set'
+syn match   upfOption               '\-parameters'
+syn match   upfOption               '\-simulation_only'
+syn match   upfOption               '\-stage_2_output'
+syn match   upfOption               '\-is_analog'
+syn match   upfOption               '\-applies_to_source_off_clamp'
+syn match   upfOption               '\-retention_ground_net'
+syn match   upfOption               '\-vct'
+syn match   upfOption               '\-related_ground_pin'
+syn match   upfOption               '\-retention_supply_set'
+syn match   upfOption               '\-use_equivalence'
+syn match   upfOption               '\-simstate'
+syn match   upfOption               '\-enable'
+syn match   upfOption               '\-instance'
+syn match   upfOption               '\-source'
+syn match   upfOption               '\-define_func_type'
+syn match   upfOption               '\-restore_condition'
+syn match   upfOption               '\-from'
+syn match   upfOption               '\-vcms'
+syn match   upfOption               '\-models'
+syn match   upfOption               '\-pin_groups'
+syn match   upfOption               '\-applies_to_boundary'
+syn match   upfOption               '\-available_supplies'
+syn match   upfOption               '\-name_suffix'
+syn match   upfOption               '\-restore_signal'
+syn match   upfOption               '\-lib_cells'
+syn match   upfOption               '\-related_power_pin'
+syn match   upfOption               '\-ground_output_voltage_range'
+syn match   upfOption               '\-aux_enables'
+syn match   upfOption               '\-arch'
+syn match   upfOption               '\-sink_off_clamp'
+syn match   upfOption               '\-to'
+syn match   upfOption               '\-port'
+syn match   upfOption               '\-module'
+syn match   upfOption               '\-multi_stage'
+syn match   upfOption               '\-output_supply_port'
+syn match   upfOption               '\-nets'
+syn match   upfOption               '\-is_macro_cell'
+syn match   upfOption               '\-type'
+syn match   upfOption               '\-rail_connection'
+syn match   upfOption               '\-retention_condition'
+syn match   upfOption               '\-subdomains'
+syn match   upfOption               '\-power_domains'
+syn match   upfOption               '\-isolation_prefix'
+syn match   upfOption               '\-unconnected'
+syn match   upfOption               '\-diff_supply_only'
+syn match   upfOption               '\-internal_supply_set'
+syn match   upfOption               '\-output_voltage_range'
+syn match   upfOption               '\-isolation_power_net'
+syn match   upfOption               '\-save_condition'
+syn match   upfOption               '\-no_isolation'
+syn match   upfOption               '\-ignore_case'
+syn match   upfOption               '\-domain'
+syn match   upfOption               '\-supplies'
+syn match   upfOption               '\-object_list'
+syn match   upfOption               '\-sets'
+syn match   upfOption               '\-conversion_direction'
+syn match   upfOption               '\-leaf'
+syn match   upfOption               '\-lib_model_name'
+syn match   upfOption               '\-pst'
+syn match   upfOption               '\-assert_rs_mutex'
+syn match   upfOption               '\-restore_function'
+syn match   upfOption               '\-domains'
+syn match   upfOption               '\-related_power_port'
+syn match   upfOption               '\-input_supply_port'
+syn match   upfOption               '\-valid_location'
+syn match   upfOption               '\-field'
+syn match   upfOption               '\-legal'
+syn match   upfOption               '\-controlling_domain'
+syn match   upfOption               '\-exclude_ports'
+syn match   upfOption               '\-assert_s_mutex'
+syn match   upfOption               '\-literal_supply'
+syn match   upfOption               '\-use_retention_as_primary'
+syn match   upfOption               '\-reconnect'
+syn match   upfOption               '\-resolve'
+syn match   upfOption               '\-direction'
+syn match   upfOption               '\-control_expr'
+syn match   upfOption               '\-atomic'
+syn match   upfOption               '\-input_power_pin'
+syn match   upfOption               '\-level_shift_suffix'
+syn match   upfOption               '\-stage_1_enable'
+syn match   upfOption               '\-full_on_tools'
+syn match   upfOption               '\-clamp_value'
+syn match   upfOption               '\-cell_type'
+syn match   upfOption               '\-is_isolated'
+syn match   upfOption               '\-isolated_pins'
+syn match   upfOption               '\-illegal'
+syn match   upfOption               '\-no_enable'
+syn match   upfOption               '\-location'
+syn match   upfOption               '\-source_off_clamp'
+syn match   upfOption               '\-assert_r_mutex'
+syn match   upfOption               '\-complete'
+syn match   upfOption               '\-expand'
+syn match   upfOption               '\-all'
+syn match   upfOption               '\-switch_type'
+syn match   upfOption               '\-regexp'
+syn match   upfOption               '\-isolation_sense'
+syn match   upfOption               '\-ack_port'
+syn match   upfOption               '\-exclude_elements'
+syn match   upfOption               '\-paired'
+syn match   upfOption               '\-save_signal'
+syn match   upfOption               '\-ground_switchable'
+syn match   upfOption               '\-supply_map'
+syn match   upfOption               '\-output_supply_set'
+syn match   upfOption               '\-no_shift'
+syn match   upfOption               '\-repeater_supply_set'
+syn match   upfOption               '\-function'
+syn match   upfOption               '\-async_clamp_lib_cells'
+syn match   upfOption               '\-primary_power_net'
+syn match   upfOption               '\-stage_1_output'
+syn match   upfOption               '\-for'
+syn match   upfOption               '\-always_on_pins'
+syn match   upfOption               '\-restore_check'
+syn match   upfOption               '\-traverse_macros'
+syn match   upfOption               '\-non_leaf'
+syn match   upfOption               '\-attribute'
+syn match   upfOption               '\-file'
+syn match   upfOption               '\-isolation_signal'
+syn match   upfOption               '\-lib'
+syn match   upfOption               '\-group'
+syn match   upfOption               '\-state'
+syn match   upfOption               '\-implicit_supply_suffix'
+syn match   upfOption               '\-virtual'
+syn match   upfOption               '\-pins'
+syn match   upfOption               '\-handle'
+syn match   upfOption               '\-primary_ground_net'
+syn match   upfOption               '\-interchangeable'
+syn match   upfOption               '\-force_shift'
+syn match   upfOption               '\-power'
+syn match   upfOption               '\-exact'
+syn match   upfOption               '\-params'
+syn match   upfOption               '\-update'
+syn match   upfOption               '\-hold_check'
+syn match   upfOption               '\-receiver_supply'
+syn match   upfOption               '\-applies_to_clamp'
+syn match   upfOption               '\-ports'
+syn match   upfOption               '\-power_switch'
+syn match   upfOption               '\-error_state'
+syn match   upfOption               '\-isolation_supply_set'
+syn match   upfOption               '\-input_ground_pin'
+syn match   upfOption               '\-relative_to'
+syn match   upfOption               '\-isolation_suffix'
+syn match   upfOption               '\-save_check'
+syn match   upfOption               '\-feedthrough'
+syn match   upfOption               '\-retention_purpose'
+syn match   upfOption               '\-stage_2_enable'
 
 " Global variables used by Tcl: http://www.tcl.tk/man/tcl8.6/TclCmd/tclvars.htm
 syn keyword tclVars		auto_path env errorCode errorInfo tcl_library tcl_patchLevel
