@@ -20,7 +20,7 @@
 " stand out clearly. To change the procedure color alter the 'tclProcName'
 " definition below. I suggest string for a good substiture.
 " The line resembles:
-"   HiLink tclProcName       Operator
+"   TCLHiLink tclProcName       Operator
 " ------------------------------------------------------------------------
 "
 " To diable highlighting words that start with an underscore as errors set the
@@ -64,9 +64,9 @@ endif
 if version >= 508 || !exists("s:did_tcl_syn_inits")
     if version <= 508
         let s:did_tcl_syn_inits = 1
-        command -nargs=+ HiLink hi link <args>
+        command -nargs=+ TCLHiLink hi link <args>
     else
-        command -nargs=+ HiLink hi def link <args>
+        command -nargs=+ TCLHiLink hi def link <args>
     endif
 endif
 
@@ -93,7 +93,7 @@ function! tcl_common#pred_w_switches(word, group, keywords)
           \ 'start=+\<' . a:word . '\>+ matchgroup=NONE skip=+\\$+ end=+}\|]\|;\|$\|--+'
           \ 'contains=' . l:syn_group . ',@tclOpts'
     execute 'syn match' l:syn_group 'contained' a:keywords
-    execute 'HiLink' l:syn_group  'tclOption'
+    execute 'TCLHiLink' l:syn_group  'tclOption'
     return l:syn_group
 endfunction
 
@@ -112,7 +112,7 @@ function! tcl_common#pred_w_subcmd(word, incl, keywords)
           \ 'start=+\<' . a:word . '\>+ matchgroup=NONE skip=+\\$+ end=+}\|]\|;\|$+'
           \ 'contains=' . l:contains . ',@tclOpts'
     execute 'syn keyword' l:syn_group 'contained' a:keywords
-    execute 'HiLink' l:syn_group 'tclSubcommand'
+    execute 'TCLHiLink' l:syn_group 'tclSubcommand'
     return l:syn_group
 endfunction
 
@@ -443,98 +443,98 @@ syn keyword tclInterpSUBLimitOpts contained command granularity milliseconds sec
 " -------------------------
 " Highlights: - Basic
 " -------------------------
-HiLink tclStart          Special
-HiLink tclLContinueOK    Special
-HiLink tclLContinueError Error
-HiLink tclBraceError     Error
-HiLink tclBracketError   Error
-HiLink tclIfError        Error
-HiLink tclQuotes         String
-HiLink tclNumber         Number
-HiLink tclComment        Comment
-HiLink tclIfComment      Comment
-HiLink tclIfCommentStart Comment
-HiLink tclCommentTitle   PreProc
-HiLink tclSpecial        Special
-HiLink tclTodo           Todo
-HiLink tclExpand         Underlined
-HiLink tclREClassGroup   Special
-HiLink tclREClass        Special
-HiLink tclKeyword        Statement
-HiLink tclPrimary        Statement
-HiLink tclConditional    Conditional
-HiLink tclRepeat         Repeat
-HiLink tclLabel          Label
-HiLink tclOption         PreProc
-HiLink tclSecondary      Type
-HiLink tclSubcommand     Type
-HiLink tclVariable       Identifier
-HiLink tclEnsemble       Special
-HiLink tclMaths          Special
-HiLink tclProcName       Operator
-HiLink tclVarName        Type
-HiLink tclProcType       Bold
-HiLink tclMagicName      tclKeyword
-HiLink tclNamespace      tclSpecial
+TCLHiLink tclStart          Special
+TCLHiLink tclLContinueOK    Special
+TCLHiLink tclLContinueError Error
+TCLHiLink tclBraceError     Error
+TCLHiLink tclBracketError   Error
+TCLHiLink tclIfError        Error
+TCLHiLink tclQuotes         String
+TCLHiLink tclNumber         Number
+TCLHiLink tclComment        Comment
+TCLHiLink tclIfComment      Comment
+TCLHiLink tclIfCommentStart Comment
+TCLHiLink tclCommentTitle   PreProc
+TCLHiLink tclSpecial        Special
+TCLHiLink tclTodo           Todo
+TCLHiLink tclExpand         Underlined
+TCLHiLink tclREClassGroup   Special
+TCLHiLink tclREClass        Special
+TCLHiLink tclKeyword        Statement
+TCLHiLink tclPrimary        Statement
+TCLHiLink tclConditional    Conditional
+TCLHiLink tclRepeat         Repeat
+TCLHiLink tclLabel          Label
+TCLHiLink tclOption         PreProc
+TCLHiLink tclSecondary      Type
+TCLHiLink tclSubcommand     Type
+TCLHiLink tclVariable       Identifier
+TCLHiLink tclEnsemble       Special
+TCLHiLink tclMaths          Special
+TCLHiLink tclProcName       Operator
+TCLHiLink tclVarName        Type
+TCLHiLink tclProcType       Bold
+TCLHiLink tclMagicName      tclKeyword
+TCLHiLink tclNamespace      tclSpecial
 
 
 " -------------------------
 " Highlights: - Extended
 " -------------------------
-HiLink tclChanCmds                      tclSubcommand
-HiLink tclChanCmdsConfigureOpts         tclOption
-HiLink tclChanCmdsCopyOpts              tclOption
-HiLink tclChanCmdsPutsOpts              tclOption
-HiLink tclClockCmds                     tclSubcommand
-HiLink tclClockCmdsAddOpts              tclOption
-HiLink tclDictCmds                      tclSubcommand
-HiLink tclDictCmdsFilterOpts            tclOption
-HiLink tclFileCmds                      tclSubcommand
-HiLink tclFileCmdsAtimeOpts             tclOption
-HiLink tclFileCmdsAttributesOpts        tclOption
-HiLink tclFileCmdsCopyOpts              tclOption
-HiLink tclHistoryCmds                   tclSubcommand
-HiLink tclHistoryCmdsAddCmds            tclSubcommand
-HiLink tclInterpCmds                    tclSubcommand
-HiLink tclInterpCmdsCreateOpts          tclOption
-HiLink tclInterpCmdsInvokehiddenOpts    tclOption
-HiLink tclInterpCmdsLimitOpts           tclOption
-HiLink tclInterpSUBInvokehiddenOpts     tclOption
-HiLink tclInterpSUBLimitOpts            tclOption
-HiLink tclPackageCmds                   tclSubcommand
-HiLink tclPackageCmdsPresentOpts        tclOption
-HiLink tclStringCmds                    tclSubcommand
-HiLink tclStringCmdsCompareOpts         tclOption
-HiLink tclStringCmdsIsClass             tclEnsemble
-HiLink tclStringCmdsIsClassAlnumOpts    tclOption
-HiLink tclStringCmdsMapOpts             tclOption
-HiLink tclTraceCmds                     tclSubcommand
-HiLink tclTraceCmdsAddCmds              tclSubcommand
-HiLink tclTraceCmdsAddCmdsCommandCmds   tclSubcommand
-HiLink tclTraceCmdsAddCmdsExecutionCmds tclSubcommand
-HiLink tclTraceCmdsAddCmdsVariableCmds  tclSubcommand
+TCLHiLink tclChanCmds                      tclSubcommand
+TCLHiLink tclChanCmdsConfigureOpts         tclOption
+TCLHiLink tclChanCmdsCopyOpts              tclOption
+TCLHiLink tclChanCmdsPutsOpts              tclOption
+TCLHiLink tclClockCmds                     tclSubcommand
+TCLHiLink tclClockCmdsAddOpts              tclOption
+TCLHiLink tclDictCmds                      tclSubcommand
+TCLHiLink tclDictCmdsFilterOpts            tclOption
+TCLHiLink tclFileCmds                      tclSubcommand
+TCLHiLink tclFileCmdsAtimeOpts             tclOption
+TCLHiLink tclFileCmdsAttributesOpts        tclOption
+TCLHiLink tclFileCmdsCopyOpts              tclOption
+TCLHiLink tclHistoryCmds                   tclSubcommand
+TCLHiLink tclHistoryCmdsAddCmds            tclSubcommand
+TCLHiLink tclInterpCmds                    tclSubcommand
+TCLHiLink tclInterpCmdsCreateOpts          tclOption
+TCLHiLink tclInterpCmdsInvokehiddenOpts    tclOption
+TCLHiLink tclInterpCmdsLimitOpts           tclOption
+TCLHiLink tclInterpSUBInvokehiddenOpts     tclOption
+TCLHiLink tclInterpSUBLimitOpts            tclOption
+TCLHiLink tclPackageCmds                   tclSubcommand
+TCLHiLink tclPackageCmdsPresentOpts        tclOption
+TCLHiLink tclStringCmds                    tclSubcommand
+TCLHiLink tclStringCmdsCompareOpts         tclOption
+TCLHiLink tclStringCmdsIsClass             tclEnsemble
+TCLHiLink tclStringCmdsIsClassAlnumOpts    tclOption
+TCLHiLink tclStringCmdsMapOpts             tclOption
+TCLHiLink tclTraceCmds                     tclSubcommand
+TCLHiLink tclTraceCmdsAddCmds              tclSubcommand
+TCLHiLink tclTraceCmdsAddCmdsCommandCmds   tclSubcommand
+TCLHiLink tclTraceCmdsAddCmdsExecutionCmds tclSubcommand
+TCLHiLink tclTraceCmdsAddCmdsVariableCmds  tclSubcommand
 
 " -------------------------
 " Highlights: - Special Case
 " -------------------------
-HiLink tclNamespaceCmds                 tclSubcommand
-HiLink tclNamespaceEnsemble             tclEnsemble
-HiLink tclNamespaceEnsembleCmds         tclSubcommand
-HiLink tclNamespaceEnsembleExistsOpts   tclOption
-HiLink tclNamespaceExportOpts           tclOption
+TCLHiLink tclNamespaceCmds                 tclSubcommand
+TCLHiLink tclNamespaceEnsemble             tclEnsemble
+TCLHiLink tclNamespaceEnsembleCmds         tclSubcommand
+TCLHiLink tclNamespaceEnsembleExistsOpts   tclOption
+TCLHiLink tclNamespaceExportOpts           tclOption
 
 " -------------------------
 " Highlights: - Braces, brackets and such
 " -------------------------
-HiLink tclBracketsHighlight             Comment
-HiLink tclBracesHighlight               Operator
-HiLink tclBracesArgs                    Type
-HiLink tclBracesExpression              Special
-HiLink tclEndOpts                       Type
-HiLink tclKeywordPred                   tclKeyword
-HiLink tclUnderscore                    ERROR
+TCLHiLink tclBracketsHighlight             Comment
+TCLHiLink tclBracesHighlight               Operator
+TCLHiLink tclBracesArgs                    Type
+TCLHiLink tclBracesExpression              Special
+TCLHiLink tclEndOpts                       Type
+TCLHiLink tclKeywordPred                   tclKeyword
+TCLHiLink tclUnderscore                    ERROR
 
 " Perl POD Documentation.
-HiLink perlPODProc                      Comment
+TCLHiLink perlPODProc                      Comment
 
 " vim:ft=vim
