@@ -16,6 +16,7 @@ source <sfile>:h/tcl_common.vim
 " -------------------------
 " Cleanup:
 " -------------------------
+delcommand TCLHiLink
 " if !exists("s:cleanup_done")
 "     let s:cleanup_done = 1
 "     delcommand HiLink
