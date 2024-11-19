@@ -8,13 +8,13 @@ elseif exists("b:current_syntax")
 endif
 " -------------------------
 
-" -------------------------
-" Source all the syntax defined in 'tcl_main.vim' file
-" -------------------------
-if !exists("g:loaded_common_syntax")
-    let g:loaded_common_syntax = 1
-    runtime syntax/tcl_main.vim
-endif
+" " -------------------------
+" " Source all the syntax defined in 'tcl_main.vim' file
+" " -------------------------
+" if !exists("g:loaded_common_syntax")
+"     let g:loaded_common_syntax = 1
+"     runtime syntax/tcl_main.vim
+" endif
 
 " -------------------------
 " Cleanup:
