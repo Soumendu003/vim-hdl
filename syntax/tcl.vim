@@ -19,7 +19,7 @@ endif
 " -------------------------
 " Cleanup:
 " -------------------------
-" delcommand HiLink
+delcommand HiLink
 " delfunction tcl#pred_w_switches
 " delfunction tcl#pred_w_subcmd
 
