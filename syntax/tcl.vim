@@ -19,9 +19,9 @@ endif
 " -------------------------
 " Cleanup:
 " -------------------------
-delcommand HiLink
-delfunction tcl#pred_w_switches
-delfunction tcl#pred_w_subcmd
+" delcommand HiLink
+" delfunction tcl#pred_w_switches
+" delfunction tcl#pred_w_subcmd
 
 " -------------------------
 " Hoodage:
