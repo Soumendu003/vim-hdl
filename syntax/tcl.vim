@@ -11,14 +11,17 @@ endif
 " -------------------------
 " Source all the syntax defined in 'tcl_main.vim' file
 " -------------------------
-runtime syntax/tcl_main.vim
+if !exists("g:loaded_common_syntax")
+    let g:loaded_common_syntax = 1
+    runtime syntax/tcl_main.vim
+endif
 
 " -------------------------
 " Cleanup:
 " -------------------------
 delcommand HiLink
-delfunction s:pred_w_switches
-delfunction s:pred_w_subcmd
+delfunction SG#pred_w_switches
+delfunction SG#pred_w_subcmd
 
 " -------------------------
 " Hoodage:
