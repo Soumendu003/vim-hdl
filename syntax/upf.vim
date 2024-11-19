@@ -20,8 +20,8 @@ endif
 " Cleanup:
 " -------------------------
 delcommand HiLink
-delfunction SG#pred_w_switches
-delfunction SG#pred_w_subcmd
+delfunction tcl#pred_w_switches
+delfunction tcl#pred_w_subcmd
 
 " -------------------------
 " Hoodage:

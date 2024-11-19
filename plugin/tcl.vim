@@ -80,7 +80,7 @@ endif
 "               Also changes the syntax group.
 "               Used to match switches for a subcommand.
 "   keywords    The keywords to highlight as a pattern.
-function! SG#pred_w_switches(word, group, keywords)
+function! tcl#pred_w_switches(word, group, keywords)
     let l:syn_group = 'tcl' . a:word . 'Options'
     let l:contains = l:syn_group
     let l:group = a:group
@@ -102,7 +102,7 @@ endfunction
 "   incl        Group to include in the region. 
 "               Used to point to switches for a subcommand.
 "   keywords    The keywords to highlight as a string.
-function! SG#pred_w_subcmd(word, incl, keywords)
+function! tcl#pred_w_subcmd(word, incl, keywords)
     let l:syn_group = 'tcl' . a:word . 'Options'
     let l:contains = l:syn_group
     if a:incl != ''
@@ -272,49 +272,49 @@ syn region  tclNamespaceEnsemblePred    contained keepend start=+.+ skip=+\\$+ e
 syn keyword tclNamespaceEnsemble        contained ensemble skipwhite nextgroup=tclNamespaceEnsemblePred
 
 " Predicates with switches.
-call SG#pred_w_switches('catch',     '','"-\(\(no\)\?\(break\|continue\|eval\|exit\|signal\)\)\>"')
-call SG#pred_w_switches('exec',      '','"-\(keepnewline\|ignorestderr\)\>"')
-call SG#pred_w_switches('fconfigure','','"-\(blocking\|buffering\|buffersize\|encoding\|eofchar\|error\|translation\)\>"')
-call SG#pred_w_switches('fcopy',     '','"-\(size\|command\)\>"')
-call SG#pred_w_switches('glob',      '','"-\(directory\|join\|nocomplain\|path\|tails\|types\)\>"')
-call SG#pred_w_switches('lsearch',   '','"-\(exact\|glob\|regexp\|sorted\|all\|inline\|not\|ascii\|dictionary\|integer\|nocase\|real\|decreasing\|increasing\|subindices\|start\|index\)\>"')
-call SG#pred_w_switches('lsort',     '','"-\(ascii\|dictionary\|integer\|real\|increasing\|decreasing\|indicies\|nocase\|unique\|command\|index\)\>"')
-call SG#pred_w_switches('open',      '','"-\(mode\|handshake\|queue\|timeout\|ttycontrol\|ttystatus\|xchar\|pollinterval\|sysbuffer\|lasterror\)\>"')
-call SG#pred_w_switches('puts',      '','"-\(nonewline\)\>"')
-call SG#pred_w_switches('read',      '','"-\(nonewline\)\>"')
-call SG#pred_w_switches('regexp',    '','"-\(about\|expanded\|indices\|line\|linestop\|lineanchor\|nocase\|all\|inline\|start\)\>"')
-call SG#pred_w_switches('regsub',    '','"-\(all\|expanded\|line\|linestop\|nocase\|start\)\>"')
-call SG#pred_w_switches('return',    '','"-\(code\|errorcode\|errorinfo\|level\|options\)\>"')
-call SG#pred_w_switches('socket',    '','"-\(server\|myaddr\|myport\|async\|myaddr\|error\|sockname\|peername\)\>"')
-call SG#pred_w_switches('source',    '','"-\(encoding\)\>"')
-call SG#pred_w_switches('subst',     '','"-\(nocommands\|novariables\|nobackslashes\)\>"')
-call SG#pred_w_switches('switch',    '','"-\(exact\|glob\|regexp\|nocase\|matchvar\|indexvar\)\>"')
-call SG#pred_w_switches('unload',    '','"-\(nocomplain\|keeplibrary\)\>"')
-call SG#pred_w_switches('unset',     '','"-\(nocomplain\)\>"')
+call tcl#pred_w_switches('catch',     '','"-\(\(no\)\?\(break\|continue\|eval\|exit\|signal\)\)\>"')
+call tcl#pred_w_switches('exec',      '','"-\(keepnewline\|ignorestderr\)\>"')
+call tcl#pred_w_switches('fconfigure','','"-\(blocking\|buffering\|buffersize\|encoding\|eofchar\|error\|translation\)\>"')
+call tcl#pred_w_switches('fcopy',     '','"-\(size\|command\)\>"')
+call tcl#pred_w_switches('glob',      '','"-\(directory\|join\|nocomplain\|path\|tails\|types\)\>"')
+call tcl#pred_w_switches('lsearch',   '','"-\(exact\|glob\|regexp\|sorted\|all\|inline\|not\|ascii\|dictionary\|integer\|nocase\|real\|decreasing\|increasing\|subindices\|start\|index\)\>"')
+call tcl#pred_w_switches('lsort',     '','"-\(ascii\|dictionary\|integer\|real\|increasing\|decreasing\|indicies\|nocase\|unique\|command\|index\)\>"')
+call tcl#pred_w_switches('open',      '','"-\(mode\|handshake\|queue\|timeout\|ttycontrol\|ttystatus\|xchar\|pollinterval\|sysbuffer\|lasterror\)\>"')
+call tcl#pred_w_switches('puts',      '','"-\(nonewline\)\>"')
+call tcl#pred_w_switches('read',      '','"-\(nonewline\)\>"')
+call tcl#pred_w_switches('regexp',    '','"-\(about\|expanded\|indices\|line\|linestop\|lineanchor\|nocase\|all\|inline\|start\)\>"')
+call tcl#pred_w_switches('regsub',    '','"-\(all\|expanded\|line\|linestop\|nocase\|start\)\>"')
+call tcl#pred_w_switches('return',    '','"-\(code\|errorcode\|errorinfo\|level\|options\)\>"')
+call tcl#pred_w_switches('socket',    '','"-\(server\|myaddr\|myport\|async\|myaddr\|error\|sockname\|peername\)\>"')
+call tcl#pred_w_switches('source',    '','"-\(encoding\)\>"')
+call tcl#pred_w_switches('subst',     '','"-\(nocommands\|novariables\|nobackslashes\)\>"')
+call tcl#pred_w_switches('switch',    '','"-\(exact\|glob\|regexp\|nocase\|matchvar\|indexvar\)\>"')
+call tcl#pred_w_switches('unload',    '','"-\(nocomplain\|keeplibrary\)\>"')
+call tcl#pred_w_switches('unset',     '','"-\(nocomplain\)\>"')
 
 " Predicates with sub commands.
-call SG#pred_w_subcmd('after',       '','cancel idle info')
-call SG#pred_w_subcmd('binary',      '','format scan decode encode')
-call SG#pred_w_subcmd('encoding',    '','convertfrom convertto names system')
-call SG#pred_w_subcmd('fileevent',   '','readable writable')
-call SG#pred_w_subcmd('info',        '','args body cmdcount commands complete default exists frame functions globals hostname level library loaded locals nameofexecutable patchlevel procs script sharedlibextension tclversion vars')
-call SG#pred_w_subcmd('lrange',      '','start end')
-call SG#pred_w_subcmd('memory',      '','active break info init onexit tag trace validate')
-call SG#pred_w_subcmd('seek',        '','start current end')
-call SG#pred_w_subcmd('update',      '','idletasks')
+call tcl#pred_w_subcmd('after',       '','cancel idle info')
+call tcl#pred_w_subcmd('binary',      '','format scan decode encode')
+call tcl#pred_w_subcmd('encoding',    '','convertfrom convertto names system')
+call tcl#pred_w_subcmd('fileevent',   '','readable writable')
+call tcl#pred_w_subcmd('info',        '','args body cmdcount commands complete default exists frame functions globals hostname level library loaded locals nameofexecutable patchlevel procs script sharedlibextension tclversion vars')
+call tcl#pred_w_subcmd('lrange',      '','start end')
+call tcl#pred_w_subcmd('memory',      '','active break info init onexit tag trace validate')
+call tcl#pred_w_subcmd('seek',        '','start current end')
+call tcl#pred_w_subcmd('update',      '','idletasks')
 
 " Predicates with subcommands with switches.
-call SG#pred_w_switches('names',     'tclArrayNames','"-\(exact\|glob\|regexp\)\>"')
-call SG#pred_w_subcmd('array',       'tclArrayNames','anymore donesearch exists get nextelement set size startsearch statistics unset')
+call tcl#pred_w_switches('names',     'tclArrayNames','"-\(exact\|glob\|regexp\)\>"')
+call tcl#pred_w_subcmd('array',       'tclArrayNames','anymore donesearch exists get nextelement set size startsearch statistics unset')
 
-call SG#pred_w_switches('add',       'tclClockOptions','"-\(base\|format\|gmt\|locale\|timezone\)\>"')
-call SG#pred_w_switches('clicks',    'tclClockOptions','"-\(base\|format\|gmt\|locale\|timezone\)\>"')
-call SG#pred_w_switches('format',    'tclClockOptions','"-\(base\|format\|gmt\|locale\|timezone\)\>"')
-call SG#pred_w_switches('scan',      'tclClockOptions','"-\(base\|format\|gmt\|locale\|timezone\)\>"')
-call SG#pred_w_subcmd('clock',       'tclClockOptions','microseconds milliseconds seconds')
+call tcl#pred_w_switches('add',       'tclClockOptions','"-\(base\|format\|gmt\|locale\|timezone\)\>"')
+call tcl#pred_w_switches('clicks',    'tclClockOptions','"-\(base\|format\|gmt\|locale\|timezone\)\>"')
+call tcl#pred_w_switches('format',    'tclClockOptions','"-\(base\|format\|gmt\|locale\|timezone\)\>"')
+call tcl#pred_w_switches('scan',      'tclClockOptions','"-\(base\|format\|gmt\|locale\|timezone\)\>"')
+call tcl#pred_w_subcmd('clock',       'tclClockOptions','microseconds milliseconds seconds')
 
-call SG#pred_w_switches('filter',    'tclDictFilter','"\<\(key\|script\|value\)\>"')
-call SG#pred_w_subcmd('dict',        'tclDictFilter','append create exists for get incr info keys lappend merge remove replace set size unset update values with')
+call tcl#pred_w_switches('filter',    'tclDictFilter','"\<\(key\|script\|value\)\>"')
+call tcl#pred_w_subcmd('dict',        'tclDictFilter','append create exists for get incr info keys lappend merge remove replace set size unset update values with')
 
 syn keyword tclPrimary contained chan skipwhite nextgroup=tclChanPred
 syn region  tclChanPred contained excludenl keepend start=+.+ skip=+\\$+ end=+}\|]\|;\|$+ contains=tclChanCmds,@tclStuff
