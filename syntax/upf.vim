@@ -11,8 +11,9 @@ endif
 " -------------------------
 " Source all the syntax defined in 'tcl_main.vim' file
 " -------------------------
-if !exists("g:loaded_common_tcl_syntax")
-    let g:loaded_common_tcl_syntax = 1
+if !exists("s:loaded_common_tcl_syntax")
+    let s:loaded_common_tcl_syntax = 1
+    echo "Loading common syntax file"
     runtime syntax/tcl_common.vim
 endif
 
