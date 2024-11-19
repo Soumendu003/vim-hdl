@@ -11,9 +11,7 @@ endif
 " -------------------------
 " Source all the syntax defined in 'tcl_main.vim' file
 " -------------------------
-if filereadable(".tcl_common.vim")
-    source .tcl_common.vim
-endif
+source <sfile>:h/tcl_common.vim
 
 " -------------------------
 " Cleanup:
