@@ -19,7 +19,10 @@ endif
 " -------------------------
 " Cleanup:
 " -------------------------
-delcommand HiLink
+if !exists("s:cleanup_done")
+    let s:cleanup_done = 1
+    delcommand HiLink
+endif
 " delfunction tcl#pred_w_switches
 " delfunction tcl#pred_w_subcmd
 
