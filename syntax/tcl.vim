@@ -9,6 +9,11 @@ endif
 " -------------------------
 
 " -------------------------
+" Source all the syntax defined in 'tcl_main.vim' file
+" -------------------------
+runtime syntax/tcl_main.vim
+
+" -------------------------
 " Cleanup:
 " -------------------------
 delcommand HiLink
