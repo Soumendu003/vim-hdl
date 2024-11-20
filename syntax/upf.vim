@@ -723,7 +723,7 @@ HiLink upfCmd_set_repeater upfOption
 " HiLink upfCmd_set_retention upfOption
 
 syn keyword tclPrimary      contained set_retention skipwhite nextgroup=retention_VarName
-syn match   retention_VarName contained "\a\S\+" skipwhite contains=@tclOpts,upfCmd_set_retention
+syn match   retention_VarName contained "\a\S\+" skipwhite contains=@tclOpts nextgroup=upfCmd_set_retention
 syn match upfCmd_set_retention contained "-\(domain\|elements\|exclude_elements\|retention_power_net\|retention_ground_net\|retention_supply_set\|no_retention\|save_signal\|restore_signal\|save_condition\|restore_condition\|retention_condition\|use_retention_as_primary\|parameters\|instance\|transitive\|update\)\>"
 HiLink upfCmd_set_retention upfOption
 
