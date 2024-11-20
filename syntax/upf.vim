@@ -20,7 +20,7 @@ endif
 " -------------------------
 " Source all the syntax defined in 'tcl_main.vim' file
 " -------------------------
-source <sfile>:h/tcl_common.vim
+source <sfile>:h/tcl.vim
 
 " -------------------------
 " Place script genearted part under this region
