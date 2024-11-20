@@ -264,7 +264,7 @@ syn match   tclNamespaceExportOptsGroup contained "-\a\+" contains=tclNamespaceE
 syn keyword tclNamespaceExportOpts      contained clear force command variable
 syn region  tclNamespaceExportPred      contained keepend start=+.+ skip=+\\$+ end=+}\|]\|;\|$+ contains=tclNamespaceExportOptsGroup,@tclStuff
 syn keyword tclNamespaceCmds            contained export import which skipwhite nextgroup=tclNamespaceExportPred
-syn match   tclNamespaceEnsembleExistsOptsGroup contained "-\a\+" contains=tclNamespaceEnsembleExistsOpts
+syn match   tclNamespaceEnsembleExistsOptsGroup contained "-\a\+" contains=tclNamespaceEnsembleExistsOptscallcall
 syn keyword tclNamespaceEnsembleExistsOpts      contained map prefixes subcommands unknown command namespace
 syn region  tclNamespaceEnsembleExistsPred      contained keepend start=+.+ skip=+\\$+ end=+}\|]\|;\|$+ contains=tclNamespaceEnsembleExistsOptsGroup,@tclStuff
 syn keyword tclNamespaceEnsembleCmds    contained exists create configure skipwhite nextgroup=tclNamespaceEnsembleExistsPred
