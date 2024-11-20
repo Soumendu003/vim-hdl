@@ -20,6 +20,7 @@ endif
 " -------------------------
 " Source all the syntax defined in 'tcl_main.vim' file
 " -------------------------
+let b:do_not_cleanup_tcl_funcs = 1
 source <sfile>:h/tcl.vim
 
 " -------------------------
