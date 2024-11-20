@@ -1285,7 +1285,7 @@ HiLink upfCmd_query_use_interface_cell tclOption
 
 HiLink upfKeyWord        tclKeyword
 HiLink upfOption         tclOption
-HiLink upfPrimary        tclPrimary
+HiLink upfPrimary        Statement
 
 " -------------------------
 " Cleanup:
