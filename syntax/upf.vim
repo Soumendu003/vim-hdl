@@ -30,18 +30,29 @@ function s:pred_w_switches(word, group, keywords)
     let l:group = a:group
     let l:syn = 'tclSubcommand'
     if a:group == ''
-        let l:group = 'tclPredicates'
-        let l:syn = 'tclPrimary'
+        let l:group = 'upfPredicates'
+        let l:syn = 'upfPrimary'
     endif
     execute 'syn region' l:group 'contained transparent matchgroup=' . l:syn ' keepend'
           \ 'start=+\<' . a:word . '\>+ matchgroup=NONE skip=+\\$+ end=+}\|]\|;\|$\|--+'
           \ 'contains=' . l:syn_group . ',@tclOpts'
     if a:keywords != ''
         execute 'syn match' l:syn_group 'contained' a:keywords
-        execute 'HiLink' l:syn_group  'tclOption'
+        execute 'HiLink' l:syn_group  'upfOption'
     endif
     return l:syn_group
 endfunction
+
+" -------------------------
+" Basics:
+" -------------------------
+" see Note in :h /\@=
+syn match   upfKeywordGroup contained "\([^\[{ ]\)\@<!\w\+" contains=@upfKeywords
+
+" -------------------------
+" Clusters:
+" -------------------------
+syn cluster upfKeywords     contains=@tclKeywords,upfPrimary,upfPredicates,upfKeyWord
 
 " -------------------------
 " Place script genearted part under this region
@@ -475,8 +486,8 @@ call s:pred_w_switches('query_use_interface_cell', '', '"-\(strategy\|domain\|de
 " enabling UPF syntax under this region
 " -------------------------
 
-HiLink upfKeyWord        tclKeyword
-HiLink upfOption         tclOption
+HiLink upfKeyWord        Statement
+HiLink upfOption         PreProc
 HiLink upfPrimary        Statement
 
 " -------------------------
