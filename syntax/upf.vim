@@ -1283,8 +1283,9 @@ HiLink upfCmd_query_use_interface_cell tclOption
 " enabling UPF syntax under this region
 " -------------------------
 
-HiLink upfKeyWord                 tclKeyword
-HiLink upfOption                  tclOption
+HiLink upfKeyWord        tclKeyword
+HiLink upfOption         tclOption
+HiLink upfPrimary        tclPrimary
 
 " -------------------------
 " Cleanup:
