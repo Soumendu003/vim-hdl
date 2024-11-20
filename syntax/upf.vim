@@ -28,81 +28,81 @@ source <sfile>:h/tcl_common.vim
 
 " ------------------- GENERATED REGION START ----------------------------
 " UPF-1.0 commands
-syn keyword upfKeyWord               add_domain_elements add_port_state
-syn keyword upfKeyWord               add_pst_state bind_checker connect_supply_net
-syn keyword upfKeyWord               create_hdl2upf_vct create_power_domain
-syn keyword upfKeyWord               create_power_switch create_pst
-syn keyword upfKeyWord               create_supply_net create_supply_port
-syn keyword upfKeyWord               create_upf2hdl_vct get_supply_net
-syn keyword upfKeyWord               load_upf map_isolation_cell map_level_shifter_cell
-syn keyword upfKeyWord               map_power_switch map_retention_cell
-syn keyword upfKeyWord               merge_power_domains name_format
-syn keyword upfKeyWord               save_upf set_design_top set_domain_supply_net
-syn keyword upfKeyWord               set_isolation set_isolation_control
-syn keyword upfKeyWord               set_level_shifter set_pin_related_supply
-syn keyword upfKeyWord               set_power_switch set_related_supply_net
-syn keyword upfKeyWord               set_retention set_retention_control
-syn keyword upfKeyWord               set_scope upf_version
+syn keyword upfKeyWord        contained add_domain_elements add_port_state skipwhite nextgroup=tclPred
+syn keyword upfKeyWord        contained add_pst_state bind_checker connect_supply_net skipwhite nextgroup=tclPred
+syn keyword upfKeyWord        contained create_hdl2upf_vct create_power_domain skipwhite nextgroup=tclPred
+syn keyword upfKeyWord        contained create_power_switch create_pst skipwhite nextgroup=tclPred
+syn keyword upfKeyWord        contained create_supply_net create_supply_port skipwhite nextgroup=tclPred
+syn keyword upfKeyWord        contained create_upf2hdl_vct get_supply_net skipwhite nextgroup=tclPred
+syn keyword upfKeyWord        contained load_upf map_isolation_cell map_level_shifter_cell skipwhite nextgroup=tclPred
+syn keyword upfKeyWord        contained map_power_switch map_retention_cell skipwhite nextgroup=tclPred
+syn keyword upfKeyWord        contained merge_power_domains name_format skipwhite nextgroup=tclPred
+syn keyword upfKeyWord        contained save_upf set_design_top set_domain_supply_net skipwhite nextgroup=tclPred
+syn keyword upfKeyWord        contained set_isolation set_isolation_control skipwhite nextgroup=tclPred
+syn keyword upfKeyWord        contained set_level_shifter set_pin_related_supply skipwhite nextgroup=tclPred
+syn keyword upfKeyWord        contained set_power_switch set_related_supply_net skipwhite nextgroup=tclPred
+syn keyword upfKeyWord        contained set_retention set_retention_control skipwhite nextgroup=tclPred
+syn keyword upfKeyWord        contained set_scope upf_version skipwhite nextgroup=tclPred
 
 
 " UPF-2.0 commands
-syn keyword upfKeyWord               add_power_state associate_supply_set
-syn keyword upfKeyWord               connect_logic_net connect_supply_set
-syn keyword upfKeyWord               create_composite_domain create_logic_net
-syn keyword upfKeyWord               create_logic_port create_supply_set
-syn keyword upfKeyWord               describe_state_transition find_objects
-syn keyword upfKeyWord               load_simstate_behavior load_upf_protected
-syn keyword upfKeyWord               query_associate_supply_set query_bind_checker
-syn keyword upfKeyWord               query_cell_instances query_cell_mapped
-syn keyword upfKeyWord               query_composite_domain query_design_attributes
-syn keyword upfKeyWord               query_hdl2upf_vct query_isolation
-syn keyword upfKeyWord               query_isolation_control query_level_shifter
-syn keyword upfKeyWord               query_map_isolation_cell query_map_level_shifter_cell
-syn keyword upfKeyWord               query_map_power_switch query_map_retention_cell
-syn keyword upfKeyWord               query_name_format query_net_ports
-syn keyword upfKeyWord               query_partial_on_translation query_pin_related_supply
-syn keyword upfKeyWord               query_port_attributes query_port_direction
-syn keyword upfKeyWord               query_port_net query_port_state
-syn keyword upfKeyWord               query_power_domain query_power_domain_element
-syn keyword upfKeyWord               query_power_state query_power_switch
-syn keyword upfKeyWord               query_pst query_pst_state query_retention
-syn keyword upfKeyWord               query_retention_control query_retention_elements
-syn keyword upfKeyWord               query_simstate_behavior query_state_transition
-syn keyword upfKeyWord               query_supply_net query_supply_port
-syn keyword upfKeyWord               query_supply_set query_upf query_upf2hdl_vct
-syn keyword upfKeyWord               query_use_interface_cell set_design_attributes
-syn keyword upfKeyWord               set_partial_on_translation set_port_attributes
-syn keyword upfKeyWord               set_retention_elements set_simstate_behavior
-syn keyword upfKeyWord               use_interface_cell
+syn keyword upfKeyWord        contained add_power_state associate_supply_set skipwhite nextgroup=tclPred
+syn keyword upfKeyWord        contained connect_logic_net connect_supply_set skipwhite nextgroup=tclPred
+syn keyword upfKeyWord        contained create_composite_domain create_logic_net skipwhite nextgroup=tclPred
+syn keyword upfKeyWord        contained create_logic_port create_supply_set skipwhite nextgroup=tclPred
+syn keyword upfKeyWord        contained describe_state_transition find_objects skipwhite nextgroup=tclPred
+syn keyword upfKeyWord        contained load_simstate_behavior load_upf_protected skipwhite nextgroup=tclPred
+syn keyword upfKeyWord        contained query_associate_supply_set query_bind_checker skipwhite nextgroup=tclPred
+syn keyword upfKeyWord        contained query_cell_instances query_cell_mapped skipwhite nextgroup=tclPred
+syn keyword upfKeyWord        contained query_composite_domain query_design_attributes skipwhite nextgroup=tclPred
+syn keyword upfKeyWord        contained query_hdl2upf_vct query_isolation skipwhite nextgroup=tclPred
+syn keyword upfKeyWord        contained query_isolation_control query_level_shifter skipwhite nextgroup=tclPred
+syn keyword upfKeyWord        contained query_map_isolation_cell query_map_level_shifter_cell skipwhite nextgroup=tclPred
+syn keyword upfKeyWord        contained query_map_power_switch query_map_retention_cell skipwhite nextgroup=tclPred
+syn keyword upfKeyWord        contained query_name_format query_net_ports skipwhite nextgroup=tclPred
+syn keyword upfKeyWord        contained query_partial_on_translation query_pin_related_supply skipwhite nextgroup=tclPred
+syn keyword upfKeyWord        contained query_port_attributes query_port_direction skipwhite nextgroup=tclPred
+syn keyword upfKeyWord        contained query_port_net query_port_state skipwhite nextgroup=tclPred
+syn keyword upfKeyWord        contained query_power_domain query_power_domain_element skipwhite nextgroup=tclPred
+syn keyword upfKeyWord        contained query_power_state query_power_switch skipwhite nextgroup=tclPred
+syn keyword upfKeyWord        contained query_pst query_pst_state query_retention skipwhite nextgroup=tclPred
+syn keyword upfKeyWord        contained query_retention_control query_retention_elements skipwhite nextgroup=tclPred
+syn keyword upfKeyWord        contained query_simstate_behavior query_state_transition skipwhite nextgroup=tclPred
+syn keyword upfKeyWord        contained query_supply_net query_supply_port skipwhite nextgroup=tclPred
+syn keyword upfKeyWord        contained query_supply_set query_upf query_upf2hdl_vct skipwhite nextgroup=tclPred
+syn keyword upfKeyWord        contained query_use_interface_cell set_design_attributes skipwhite nextgroup=tclPred
+syn keyword upfKeyWord        contained set_partial_on_translation set_port_attributes skipwhite nextgroup=tclPred
+syn keyword upfKeyWord        contained set_retention_elements set_simstate_behavior skipwhite nextgroup=tclPred
+syn keyword upfKeyWord        contained use_interface_cell skipwhite nextgroup=tclPred
 
 
 " UPF-2.1 commands
-syn keyword upfKeyWord               apply_power_model begin_power_model
-syn keyword upfKeyWord               define_always_on_cell define_diode_clamp
-syn keyword upfKeyWord               define_isolation_cell define_level_shifter_cell
-syn keyword upfKeyWord               define_power_switch_cell define_retention_cell
-syn keyword upfKeyWord               end_power_model set_equivalent
-syn keyword upfKeyWord               set_repeater
+syn keyword upfKeyWord        contained apply_power_model begin_power_model skipwhite nextgroup=tclPred
+syn keyword upfKeyWord        contained define_always_on_cell define_diode_clamp skipwhite nextgroup=tclPred
+syn keyword upfKeyWord        contained define_isolation_cell define_level_shifter_cell skipwhite nextgroup=tclPred
+syn keyword upfKeyWord        contained define_power_switch_cell define_retention_cell skipwhite nextgroup=tclPred
+syn keyword upfKeyWord        contained end_power_model set_equivalent skipwhite nextgroup=tclPred
+syn keyword upfKeyWord        contained set_repeater skipwhite nextgroup=tclPred
 
 
 " UPF-3.0 commands
-syn keyword upfKeyWord               add_parameter add_state_transition
-syn keyword upfKeyWord               add_supply_state create_power_state_group
-syn keyword upfKeyWord               map_repeater_cell set_correlated
-syn keyword upfKeyWord               set_variation upf_object_in_class
-syn keyword upfKeyWord               upf_query_object_pathname upf_query_object_properties
-syn keyword upfKeyWord               upf_query_object_type
+syn keyword upfKeyWord        contained add_parameter add_state_transition skipwhite nextgroup=tclPred
+syn keyword upfKeyWord        contained add_supply_state create_power_state_group skipwhite nextgroup=tclPred
+syn keyword upfKeyWord        contained map_repeater_cell set_correlated skipwhite nextgroup=tclPred
+syn keyword upfKeyWord        contained set_variation upf_object_in_class skipwhite nextgroup=tclPred
+syn keyword upfKeyWord        contained upf_query_object_pathname upf_query_object_properties skipwhite nextgroup=tclPred
+syn keyword upfKeyWord        contained upf_query_object_type skipwhite nextgroup=tclPred
 
 
 " UPF-3.1 commands
-syn keyword upfKeyWord               define_power_model sim_assertion_control
-syn keyword upfKeyWord               sim_corruption_control sim_replay_control
+syn keyword upfKeyWord        contained define_power_model sim_assertion_control skipwhite nextgroup=tclPred
+syn keyword upfKeyWord        contained sim_corruption_control sim_replay_control skipwhite nextgroup=tclPred
 
 
 " UPF-4.0 commands
-syn keyword upfKeyWord               create_abstract_power_source create_upf_library
-syn keyword upfKeyWord               create_vcm load_upf_library map_retention_clamp_cell
-syn keyword upfKeyWord               use_upf_library
+syn keyword upfKeyWord        contained create_abstract_power_source create_upf_library skipwhite nextgroup=tclPred
+syn keyword upfKeyWord        contained create_vcm load_upf_library map_retention_clamp_cell skipwhite nextgroup=tclPred
+syn keyword upfKeyWord        contained use_upf_library skipwhite nextgroup=tclPred
 
 
 " UPF-1.0 options
