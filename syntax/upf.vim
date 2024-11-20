@@ -718,7 +718,7 @@ HiLink upfCmd_set_repeater upfOption
 " Define syntax region for the command 'set_retention'
 syn region tclPredicates contained transparent matchgroup=tclPrimary keepend
   \ start=+\<set_retention\>+ matchgroup=NONE skip=+\\$+ end=+}\|]\|;\|$\|--+
-  \ contains=@tclOpts,upfCmd_set_retention
+  \ contains=@tclOpts,upfCmd_set_retention,tclVarName
 syn match upfCmd_set_retention contained "-\(domain\|elements\|exclude_elements\|retention_power_net\|retention_ground_net\|retention_supply_set\|no_retention\|save_signal\|restore_signal\|save_condition\|restore_condition\|retention_condition\|use_retention_as_primary\|parameters\|instance\|transitive\|update\)\>"
 HiLink upfCmd_set_retention upfOption
 
