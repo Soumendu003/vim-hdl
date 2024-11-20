@@ -92,8 +92,10 @@ function! tcl_common#pred_w_switches(word, group, keywords)
     execute 'syn region' l:group 'contained transparent matchgroup=' . l:syn ' keepend'
           \ 'start=+\<' . a:word . '\>+ matchgroup=NONE skip=+\\$+ end=+}\|]\|;\|$\|--+'
           \ 'contains=' . l:syn_group . ',@tclOpts'
-    execute 'syn match' l:syn_group 'contained' a:keywords
-    execute 'TCLHiLink' l:syn_group  'tclOption'
+    if a:keywords != ''
+        execute 'syn match' l:syn_group 'contained' a:keywords
+        execute 'TCLHiLink' l:syn_group  'tclOption'
+    endif
     return l:syn_group
 endfunction
 
