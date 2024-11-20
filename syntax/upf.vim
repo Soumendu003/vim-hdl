@@ -340,9 +340,7 @@ TCLHiLink upfOption                  tclOption
 " -------------------------
 " Cleanup:
 " -------------------------
-delcommand TCLHiLink
-delfunction tcl_common#pred_w_switches
-delfunction tcl_common#pred_w_subcmd
+delcommand HiLink
 
 " -------------------------
 " Hoodage:
