@@ -28,6 +28,7 @@ source <sfile>:h/tcl.vim
 " -------------------------
 
 " ------------------- GENERATED REGION START ----------------------------
+" UPF-1.0 commands
 syn keyword upfKeyWord        contained add_domain_elements add_port_state skipwhite nextgroup=tclPred
 syn keyword upfKeyWord        contained add_pst_state bind_checker connect_supply_net skipwhite nextgroup=tclPred
 syn keyword upfKeyWord        contained create_hdl2upf_vct create_power_domain skipwhite nextgroup=tclPred
@@ -203,130 +204,1103 @@ syn keyword upfOption contained      on_state output_supply_set power_switch
 syn keyword upfOption contained      supply_set vcms virtual
 
 
+" Define syntax region for the command 'add_domain_elements'
+syn region upfCmd_add_domain_elements contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"add_domain_elements"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_add_domain_elements,@tclOpts
+syn match upfCmd_add_domain_elements contained "-\(elements\)\>"
+HiLink upfCmd_add_domain_elements tclOption
 
 
-call tcl_common#pred_w_switches('add_domain_elements', '', '"-\(elements\)\>"')
-call tcl_common#pred_w_switches('add_parameter', '', '"-\(type\|default\|description\)\>"')
-call tcl_common#pred_w_switches('add_port_state', '', '"-\(state\)\>"')
-call tcl_common#pred_w_switches('add_power_state', '', '"-\(supply\|domain\|group\|model\|instance\|state\|simstate\|legal\|illegal\|complete\|update\)\>"')
-call tcl_common#pred_w_switches('add_pst_state', '', '"-\(pst\|state\)\>"')
-call tcl_common#pred_w_switches('add_state_transition', '', '"-\(supply\|domain\|group\|model\|instance\|update\|transition\|complete\)\>"')
-call tcl_common#pred_w_switches('add_supply_state', '', '"-\(state\)\>"')
-call tcl_common#pred_w_switches('apply_power_model', '', '"-\(elements\|supply_map\|port_map\|parameters\)\>"')
-call tcl_common#pred_w_switches('associate_supply_set', '', '"-\(handle\)\>"')
-call tcl_common#pred_w_switches('begin_power_model', '', '"-\(for\)\>"')
-call tcl_common#pred_w_switches('bind_checker', '', '"-\(module\|elements\|ports\|bind_to\|arch\)\>"')
-call tcl_common#pred_w_switches('connect_logic_net', '', '"-\(ports\|reconnect\)\>"')
-call tcl_common#pred_w_switches('connect_supply_net', '', '"-\(ports\|pg_type\|vct\|cells\|domain\|pins\|rail_connection\|elements\)\>"')
-call tcl_common#pred_w_switches('connect_supply_set', '', '"-\(connect\|elements\|exclude_elements\|transitive\)\>"')
-call tcl_common#pred_w_switches('create_abstract_power_source', '', '"-\(output_supply_set\|input_supply_set\|control_port\|on_state\|off_state\|supply_set\|ack_port\|ack_delay\|ack_polarity\|power_switch\|update\)\>"')
-call tcl_common#pred_w_switches('create_composite_domain', '', '"-\(subdomains\|supply\|update\)\>"')
-call tcl_common#pred_w_switches('create_hdl2upf_vct', '', '"-\(hdl_type\|table\)\>"')
-call tcl_common#pred_w_switches('create_logic_net', '', '')
-call tcl_common#pred_w_switches('create_logic_port', '', '"-\(direction\)\>"')
-call tcl_common#pred_w_switches('create_power_domain', '', '"-\(elements\|include_scope\|scope\|exclude_elements\|simulation_only\|supply\|define_func_type\|update\|atomic\|available_supplies\|boundary_supplies\)\>"')
-call tcl_common#pred_w_switches('create_power_switch', '', '"-\(domain\|output_supply_port\|input_supply_port\|control_port\|on_state\|on_partial_state\|ack_port\|ack_delay\|off_state\|error_state\|supply_set\|instance\|update\|switch_type\)\>"')
-call tcl_common#pred_w_switches('create_power_state_group', '', '')
-call tcl_common#pred_w_switches('create_pst', '', '"-\(supplies\)\>"')
-call tcl_common#pred_w_switches('create_supply_net', '', '"-\(domain\|reuse\|resolve\|virtual\)\>"')
-call tcl_common#pred_w_switches('create_supply_port', '', '"-\(domain\|direction\|virtual\)\>"')
-call tcl_common#pred_w_switches('create_supply_set', '', '"-\(function\|reference_gnd\|update\|virtual\)\>"')
-call tcl_common#pred_w_switches('create_upf2hdl_vct', '', '"-\(hdl_type\|table\)\>"')
-call tcl_common#pred_w_switches('create_upf_library', '', '"-\(contents\)\>"')
-call tcl_common#pred_w_switches('create_vcm', '', '"-\(table\|hdl_type\|conversion_direction\|field\|function\|model\|parameters\|vcms\)\>"')
-call tcl_common#pred_w_switches('define_always_on_cell', '', '"-\(cells\|power\|ground\|power_switchable\|ground_switchable\|isolated_pins\|enable\)\>"')
-call tcl_common#pred_w_switches('define_diode_clamp', '', '"-\(cells\|data_pins\|type\|power\|ground\)\>"')
-call tcl_common#pred_w_switches('define_isolation_cell', '', '"-\(cells\|power\|ground\|enable\|clamp_cell\|pin_groups\|no_enable\|always_on_pins\|aux_enables\|power_switchable\|ground_switchable\|valid_location\|non_dedicated\)\>"')
-call tcl_common#pred_w_switches('define_level_shifter_cell', '', '"-\(cells\|input_voltage_range\|output_voltage_range\|ground_input_voltage_range\|ground_output_voltage_range\|direction\|input_power_pin\|output_power_pin\|input_ground_pin\|output_ground_pin\|power\|ground\|enable\|pin_groups\|valid_location\|bypass_enable\|multi_stage\)\>"')
-call tcl_common#pred_w_switches('define_power_model', '', '"-\(for\)\>"')
-call tcl_common#pred_w_switches('define_power_switch_cell', '', '"-\(cells\|type\|stage_1_enable\|stage_1_output\|power_switchable\|power\|ground_switchable\|ground\|stage_2_enable\|stage_2_output\|always_on_pins\|gate_bias_pin\)\>"')
-call tcl_common#pred_w_switches('define_retention_cell', '', '"-\(cells\|power\|ground\|cell_type\|always_on_pins\|restore_function\|save_function\|restore_check\|save_check\|retention_check\|hold_check\|always_on_components\|power_switchable\|ground_switchable\)\>"')
-call tcl_common#pred_w_switches('describe_state_transition', '', '"-\(object\|from\|to\|paired\|legal\|illegal\)\>"')
-call tcl_common#pred_w_switches('end_power_model', '', '')
-call tcl_common#pred_w_switches('find_objects', '', '"-\(pattern\|object_type\|direction\|transitive\|regexp\|exact\|ignore_case\|non_leaf\|leaf_only\|traverse_macros\)\>"')
-call tcl_common#pred_w_switches('get_supply_net', '', '"-\(domain\|scope\)\>"')
-call tcl_common#pred_w_switches('load_simstate_behavior', '', '"-\(file\)\>"')
-call tcl_common#pred_w_switches('load_upf', '', '"-\(scope\|hide_globals\|parameters\|version\)\>"')
-call tcl_common#pred_w_switches('load_upf_library', '', '')
-call tcl_common#pred_w_switches('load_upf_protected', '', '"-\(hide_globals\|scope\|version\|params\)\>"')
-call tcl_common#pred_w_switches('map_isolation_cell', '', '"-\(domain\|elements\|lib_cells\|lib_cell_type\|lib_model_name\|port\)\>"')
-call tcl_common#pred_w_switches('map_level_shifter_cell', '', '"-\(domain\|lib_cells\|elements\)\>"')
-call tcl_common#pred_w_switches('map_power_switch', '', '"-\(domain\|lib_cells\|port_map\)\>"')
-call tcl_common#pred_w_switches('map_repeater_cell', '', '"-\(domain\|elements\|exclude_elements\|lib_cells\)\>"')
-call tcl_common#pred_w_switches('map_retention_cell', '', '"-\(domain\|elements\|lib_cells\|lib_cell_type\|lib_model_name\|port\|exclude_elements\)\>"')
-call tcl_common#pred_w_switches('map_retention_clamp_cell', '', '"-\(domain\|clock_clamp_lib_cells\|async_clamp_lib_cells\)\>"')
-call tcl_common#pred_w_switches('merge_power_domains', '', '"-\(power_domains\|scope\|all_equivalent\)\>"')
-call tcl_common#pred_w_switches('name_format', '', '"-\(isolation_prefix\|isolation_suffix\|level_shift_prefix\|level_shift_suffix\|implicit_supply_suffix\|implicit_logic_prefix\|implicit_logic_suffix\)\>"')
-call tcl_common#pred_w_switches('save_upf', '', '"-\(scope\|version\)\>"')
-call tcl_common#pred_w_switches('set_correlated', '', '"-\(nets\|sets\)\>"')
-call tcl_common#pred_w_switches('set_design_attributes', '', '"-\(elements\|exclude_elements\|models\|attribute\|is_leaf_cell\|is_macro_cell\|is_soft_macro\|is_hard_macro\|switch_cell_type\|transitive\)\>"')
-call tcl_common#pred_w_switches('set_design_top', '', '')
-call tcl_common#pred_w_switches('set_domain_supply_net', '', '"-\(primary_power_net\|primary_ground_net\)\>"')
-call tcl_common#pred_w_switches('set_equivalent', '', '"-\(function_only\|interchangeable\|nets\|sets\)\>"')
-call tcl_common#pred_w_switches('set_isolation', '', '"-\(domain\|elements\|exclude_elements\|isolation_power_net\|isolation_ground_net\|no_isolation\|force_isolation\|source\|sink\|use_equivalence\|use_functional_equivalence\|applies_to\|applies_to_clamp\|applies_to_sink_off_clamp\|applies_to_source_off_clamp\|applies_to_boundary\|location\|clamp_value\|isolation_supply_set\|isolation_signal\|isolation_sense\|name_prefix\|name_suffix\|sink_off_clamp\|source_off_clamp\|instance\|diff_supply_only\|transitive\|update\)\>"')
-call tcl_common#pred_w_switches('set_isolation_control', '', '"-\(domain\|isolation_signal\|isolation_sense\|location\)\>"')
-call tcl_common#pred_w_switches('set_level_shifter', '', '"-\(domain\|elements\|exclude_elements\|applies_to\|applies_to_boundary\|threshold\|rule\|location\|no_shift\|force_shift\|source\|sink\|use_equivalence\|use_functional_equivalence\|name_prefix\|name_suffix\|input_supply_set\|output_supply_set\|internal_supply_set\|instance\|transitive\|update\)\>"')
-call tcl_common#pred_w_switches('set_partial_on_translation', '', '"-\(full_on_tools\|off_tools\)\>"')
-call tcl_common#pred_w_switches('set_pin_related_supply', '', '"-\(pins\|related_power_pin\|related_ground_pin\)\>"')
-call tcl_common#pred_w_switches('set_port_attributes', '', '"-\(ports\|exclude_ports\|domains\|exclude_domains\|elements\|exclude_elements\|model\|attribute\|clamp_value\|sink_off_clamp\|source_off_clamp\|receiver_supply\|driver_supply\|related_power_port\|related_ground_port\|related_bias_ports\|repeater_supply\|pg_type\|transitive\|applies_to\|feedthrough\|unconnected\|literal_supply\|is_isolated\|is_analog\)\>"')
-call tcl_common#pred_w_switches('set_power_switch', '', '"-\(output_supply_port\|input_supply_port\|control_port\|supply_set\|on_state\|on_partial_state\|off_state\|error_state\)\>"')
-call tcl_common#pred_w_switches('set_related_supply_net', '', '"-\(object_list\|ground\|power\)\>"')
-call tcl_common#pred_w_switches('set_repeater', '', '"-\(domain\|elements\|exclude_elements\|source\|sink\|use_equivalence\|use_functional_equivalence\|applies_to\|applies_to_boundary\|repeater_supply_set\|name_prefix\|name_suffix\|instance\|update\)\>"')
-call tcl_common#pred_w_switches('set_retention', '', '"-\(domain\|elements\|exclude_elements\|retention_power_net\|retention_ground_net\|retention_supply_set\|no_retention\|save_signal\|restore_signal\|save_condition\|restore_condition\|retention_condition\|use_retention_as_primary\|parameters\|instance\|transitive\|update\)\>"')
-call tcl_common#pred_w_switches('set_retention_control', '', '"-\(domain\|save_signal\|restore_signal\|assert_r_mutex\|assert_s_mutex\|assert_rs_mutex\)\>"')
-call tcl_common#pred_w_switches('set_retention_elements', '', '"-\(elements\|exclude_elements\|applies_to\|retention_purpose\|transitive\|expand\)\>"')
-call tcl_common#pred_w_switches('set_scope', '', '')
-call tcl_common#pred_w_switches('set_simstate_behavior', '', '"-\(lib\|model\|elements\|exclude_elements\)\>"')
-call tcl_common#pred_w_switches('set_variation', '', '"-\(supply\|range\)\>"')
-call tcl_common#pred_w_switches('sim_assertion_control', '', '"-\(elements\|exclude_elements\|domain\|model\|controlling_domain\|control_expr\|type\|transitive\)\>"')
-call tcl_common#pred_w_switches('sim_corruption_control', '', '"-\(type\|elements\|exclude_elements\|model\|domain\|transitive\)\>"')
-call tcl_common#pred_w_switches('sim_replay_control', '', '"-\(elements\|exclude_elements\|model\|domain\|controlling_domain\|transitive\)\>"')
-call tcl_common#pred_w_switches('upf_object_in_class', '', '"-\(class\)\>"')
-call tcl_common#pred_w_switches('upf_query_object_pathname', '', '"-\(relative_to\)\>"')
-call tcl_common#pred_w_switches('upf_query_object_properties', '', '"-\(property\)\>"')
-call tcl_common#pred_w_switches('upf_query_object_type', '', '')
-call tcl_common#pred_w_switches('upf_version', '', '')
-call tcl_common#pred_w_switches('use_interface_cell', '', '"-\(strategy\|domain\|lib_cells\|map\|elements\|exclude_elements\|applies_to_clamp\|update_any\|force_function\|inverter_supply_set\)\>"')
-call tcl_common#pred_w_switches('use_upf_library', '', '')
-call tcl_common#pred_w_switches('query_upf', '', '"-\(pattern\|object_type\|inst_type\|direction\|transitive\|regexp\|exact\|ignore_case\|non_leaf\|leaf_only\)\>"')
-call tcl_common#pred_w_switches('query_associate_supply_set', '', '"-\(detailed\)\>"')
-call tcl_common#pred_w_switches('query_bind_checker', '', '"-\(detailed\)\>"')
-call tcl_common#pred_w_switches('query_cell_instances', '', '"-\(domain\)\>"')
-call tcl_common#pred_w_switches('query_cell_mapped', '', '')
-call tcl_common#pred_w_switches('query_composite_domain', '', '"-\(detailed\)\>"')
-call tcl_common#pred_w_switches('query_design_attributes', '', '"-\(element\|model\|detailed\)\>"')
-call tcl_common#pred_w_switches('query_hdl2upf_vct', '', '"-\(detailed\)\>"')
-call tcl_common#pred_w_switches('query_isolation', '', '"-\(domain\|detailed\)\>"')
-call tcl_common#pred_w_switches('query_isolation_control', '', '"-\(domain\|detailed\)\>"')
-call tcl_common#pred_w_switches('query_level_shifter', '', '"-\(domain\|detailed\)\>"')
-call tcl_common#pred_w_switches('query_map_isolation_cell', '', '"-\(domain\|detailed\)\>"')
-call tcl_common#pred_w_switches('query_map_level_shifter_cell', '', '"-\(domain\|detailed\)\>"')
-call tcl_common#pred_w_switches('query_map_power_switch', '', '"-\(detailed\)\>"')
-call tcl_common#pred_w_switches('query_map_retention_cell', '', '"-\(domain\|detailed\)\>"')
-call tcl_common#pred_w_switches('query_name_format', '', '"-\(isolation_prefix\|isolation_suffix\|level_shift_prefix\|level_shift_suffix\|implicit_supply_prefix\|implicit_supply_suffix\|implicit_logic_prefix\|implicit_logic_suffix\|detailed\)\>"')
-call tcl_common#pred_w_switches('query_net_ports', '', '"-\(transitive\|leaf\)\>"')
-call tcl_common#pred_w_switches('query_partial_on_translation', '', '')
-call tcl_common#pred_w_switches('query_pin_related_supply', '', '"-\(detailed\)\>"')
-call tcl_common#pred_w_switches('query_port_attributes', '', '"-\(detailed\)\>"')
-call tcl_common#pred_w_switches('query_port_direction', '', '')
-call tcl_common#pred_w_switches('query_port_net', '', '"-\(conn\)\>"')
-call tcl_common#pred_w_switches('query_port_state', '', '"-\(state\|detailed\)\>"')
-call tcl_common#pred_w_switches('query_power_domain', '', '"-\(non_leaf\|all\|no_elements\|detailed\)\>"')
-call tcl_common#pred_w_switches('query_power_domain_element', '', '')
-call tcl_common#pred_w_switches('query_power_state', '', '"-\(state\|detailed\)\>"')
-call tcl_common#pred_w_switches('query_power_switch', '', '"-\(detailed\)\>"')
-call tcl_common#pred_w_switches('query_pst', '', '"-\(detailed\)\>"')
-call tcl_common#pred_w_switches('query_pst_state', '', '"-\(pst\|detailed\)\>"')
-call tcl_common#pred_w_switches('query_retention', '', '"-\(domain\|detailed\)\>"')
-call tcl_common#pred_w_switches('query_retention_control', '', '"-\(domain\|detailed\)\>"')
-call tcl_common#pred_w_switches('query_retention_elements', '', '"-\(detailed\)\>"')
-call tcl_common#pred_w_switches('query_simstate_behavior', '', '"-\(lib\|model\|detailed\)\>"')
-call tcl_common#pred_w_switches('query_state_transition', '', '"-\(object\|from\|to\|paired\|legal\|illegal\|detailed\)\>"')
-call tcl_common#pred_w_switches('query_supply_net', '', '"-\(domain\|is_supply\|detailed\)\>"')
-call tcl_common#pred_w_switches('query_supply_port', '', '"-\(domain\|is_supply\|detailed\)\>"')
-call tcl_common#pred_w_switches('query_supply_set', '', '"-\(detailed\|transitive\)\>"')
-call tcl_common#pred_w_switches('query_upf2hdl_vct', '', '"-\(detailed\)\>"')
-call tcl_common#pred_w_switches('query_use_interface_cell', '', '"-\(strategy\|domain\|detailed\)\>"')
+
+" Define syntax region for the command 'add_parameter'
+syn region upfCmd_add_parameter contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"add_parameter"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_add_parameter,@tclOpts
+syn match upfCmd_add_parameter contained "-\(type\|default\|description\)\>"
+HiLink upfCmd_add_parameter tclOption
+
+
+
+" Define syntax region for the command 'add_port_state'
+syn region upfCmd_add_port_state contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"add_port_state"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_add_port_state,@tclOpts
+syn match upfCmd_add_port_state contained "-\(state\)\>"
+HiLink upfCmd_add_port_state tclOption
+
+
+
+" Define syntax region for the command 'add_power_state'
+syn region upfCmd_add_power_state contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"add_power_state"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_add_power_state,@tclOpts
+syn match upfCmd_add_power_state contained "-\(supply\|domain\|group\|model\|instance\|state\|simstate\|legal\|illegal\|complete\|update\)\>"
+HiLink upfCmd_add_power_state tclOption
+
+
+
+" Define syntax region for the command 'add_pst_state'
+syn region upfCmd_add_pst_state contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"add_pst_state"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_add_pst_state,@tclOpts
+syn match upfCmd_add_pst_state contained "-\(pst\|state\)\>"
+HiLink upfCmd_add_pst_state tclOption
+
+
+
+" Define syntax region for the command 'add_state_transition'
+syn region upfCmd_add_state_transition contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"add_state_transition"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_add_state_transition,@tclOpts
+syn match upfCmd_add_state_transition contained "-\(supply\|domain\|group\|model\|instance\|update\|transition\|complete\)\>"
+HiLink upfCmd_add_state_transition tclOption
+
+
+
+" Define syntax region for the command 'add_supply_state'
+syn region upfCmd_add_supply_state contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"add_supply_state"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_add_supply_state,@tclOpts
+syn match upfCmd_add_supply_state contained "-\(state\)\>"
+HiLink upfCmd_add_supply_state tclOption
+
+
+
+" Define syntax region for the command 'apply_power_model'
+syn region upfCmd_apply_power_model contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"apply_power_model"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_apply_power_model,@tclOpts
+syn match upfCmd_apply_power_model contained "-\(elements\|supply_map\|port_map\|parameters\)\>"
+HiLink upfCmd_apply_power_model tclOption
+
+
+
+" Define syntax region for the command 'associate_supply_set'
+syn region upfCmd_associate_supply_set contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"associate_supply_set"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_associate_supply_set,@tclOpts
+syn match upfCmd_associate_supply_set contained "-\(handle\)\>"
+HiLink upfCmd_associate_supply_set tclOption
+
+
+
+" Define syntax region for the command 'begin_power_model'
+syn region upfCmd_begin_power_model contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"begin_power_model"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_begin_power_model,@tclOpts
+syn match upfCmd_begin_power_model contained "-\(for\)\>"
+HiLink upfCmd_begin_power_model tclOption
+
+
+
+" Define syntax region for the command 'bind_checker'
+syn region upfCmd_bind_checker contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"bind_checker"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_bind_checker,@tclOpts
+syn match upfCmd_bind_checker contained "-\(module\|elements\|ports\|bind_to\|arch\)\>"
+HiLink upfCmd_bind_checker tclOption
+
+
+
+" Define syntax region for the command 'connect_logic_net'
+syn region upfCmd_connect_logic_net contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"connect_logic_net"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_connect_logic_net,@tclOpts
+syn match upfCmd_connect_logic_net contained "-\(ports\|reconnect\)\>"
+HiLink upfCmd_connect_logic_net tclOption
+
+
+
+" Define syntax region for the command 'connect_supply_net'
+syn region upfCmd_connect_supply_net contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"connect_supply_net"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_connect_supply_net,@tclOpts
+syn match upfCmd_connect_supply_net contained "-\(ports\|pg_type\|vct\|cells\|domain\|pins\|rail_connection\|elements\)\>"
+HiLink upfCmd_connect_supply_net tclOption
+
+
+
+" Define syntax region for the command 'connect_supply_set'
+syn region upfCmd_connect_supply_set contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"connect_supply_set"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_connect_supply_set,@tclOpts
+syn match upfCmd_connect_supply_set contained "-\(connect\|elements\|exclude_elements\|transitive\)\>"
+HiLink upfCmd_connect_supply_set tclOption
+
+
+
+" Define syntax region for the command 'create_abstract_power_source'
+syn region upfCmd_create_abstract_power_source contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"create_abstract_power_source"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_create_abstract_power_source,@tclOpts
+syn match upfCmd_create_abstract_power_source contained "-\(output_supply_set\|input_supply_set\|control_port\|on_state\|off_state\|supply_set\|ack_port\|ack_delay\|ack_polarity\|power_switch\|update\)\>"
+HiLink upfCmd_create_abstract_power_source tclOption
+
+
+
+" Define syntax region for the command 'create_composite_domain'
+syn region upfCmd_create_composite_domain contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"create_composite_domain"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_create_composite_domain,@tclOpts
+syn match upfCmd_create_composite_domain contained "-\(subdomains\|supply\|update\)\>"
+HiLink upfCmd_create_composite_domain tclOption
+
+
+
+" Define syntax region for the command 'create_hdl2upf_vct'
+syn region upfCmd_create_hdl2upf_vct contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"create_hdl2upf_vct"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_create_hdl2upf_vct,@tclOpts
+syn match upfCmd_create_hdl2upf_vct contained "-\(hdl_type\|table\)\>"
+HiLink upfCmd_create_hdl2upf_vct tclOption
+
+
+
+" Define syntax region for the command 'create_logic_net'
+syn region upfCmd_create_logic_net contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"create_logic_net"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_create_logic_net,@tclOpts
+syn match upfCmd_create_logic_net contained 
+HiLink upfCmd_create_logic_net tclOption
+
+
+
+" Define syntax region for the command 'create_logic_port'
+syn region upfCmd_create_logic_port contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"create_logic_port"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_create_logic_port,@tclOpts
+syn match upfCmd_create_logic_port contained "-\(direction\)\>"
+HiLink upfCmd_create_logic_port tclOption
+
+
+
+" Define syntax region for the command 'create_power_domain'
+syn region upfCmd_create_power_domain contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"create_power_domain"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_create_power_domain,@tclOpts
+syn match upfCmd_create_power_domain contained "-\(elements\|include_scope\|scope\|exclude_elements\|simulation_only\|supply\|define_func_type\|update\|atomic\|available_supplies\|boundary_supplies\)\>"
+HiLink upfCmd_create_power_domain tclOption
+
+
+
+" Define syntax region for the command 'create_power_switch'
+syn region upfCmd_create_power_switch contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"create_power_switch"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_create_power_switch,@tclOpts
+syn match upfCmd_create_power_switch contained "-\(domain\|output_supply_port\|input_supply_port\|control_port\|on_state\|on_partial_state\|ack_port\|ack_delay\|off_state\|error_state\|supply_set\|instance\|update\|switch_type\)\>"
+HiLink upfCmd_create_power_switch tclOption
+
+
+
+" Define syntax region for the command 'create_power_state_group'
+syn region upfCmd_create_power_state_group contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"create_power_state_group"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_create_power_state_group,@tclOpts
+syn match upfCmd_create_power_state_group contained 
+HiLink upfCmd_create_power_state_group tclOption
+
+
+
+" Define syntax region for the command 'create_pst'
+syn region upfCmd_create_pst contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"create_pst"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_create_pst,@tclOpts
+syn match upfCmd_create_pst contained "-\(supplies\)\>"
+HiLink upfCmd_create_pst tclOption
+
+
+
+" Define syntax region for the command 'create_supply_net'
+syn region upfCmd_create_supply_net contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"create_supply_net"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_create_supply_net,@tclOpts
+syn match upfCmd_create_supply_net contained "-\(domain\|reuse\|resolve\|virtual\)\>"
+HiLink upfCmd_create_supply_net tclOption
+
+
+
+" Define syntax region for the command 'create_supply_port'
+syn region upfCmd_create_supply_port contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"create_supply_port"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_create_supply_port,@tclOpts
+syn match upfCmd_create_supply_port contained "-\(domain\|direction\|virtual\)\>"
+HiLink upfCmd_create_supply_port tclOption
+
+
+
+" Define syntax region for the command 'create_supply_set'
+syn region upfCmd_create_supply_set contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"create_supply_set"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_create_supply_set,@tclOpts
+syn match upfCmd_create_supply_set contained "-\(function\|reference_gnd\|update\|virtual\)\>"
+HiLink upfCmd_create_supply_set tclOption
+
+
+
+" Define syntax region for the command 'create_upf2hdl_vct'
+syn region upfCmd_create_upf2hdl_vct contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"create_upf2hdl_vct"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_create_upf2hdl_vct,@tclOpts
+syn match upfCmd_create_upf2hdl_vct contained "-\(hdl_type\|table\)\>"
+HiLink upfCmd_create_upf2hdl_vct tclOption
+
+
+
+" Define syntax region for the command 'create_upf_library'
+syn region upfCmd_create_upf_library contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"create_upf_library"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_create_upf_library,@tclOpts
+syn match upfCmd_create_upf_library contained "-\(contents\)\>"
+HiLink upfCmd_create_upf_library tclOption
+
+
+
+" Define syntax region for the command 'create_vcm'
+syn region upfCmd_create_vcm contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"create_vcm"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_create_vcm,@tclOpts
+syn match upfCmd_create_vcm contained "-\(table\|hdl_type\|conversion_direction\|field\|function\|model\|parameters\|vcms\)\>"
+HiLink upfCmd_create_vcm tclOption
+
+
+
+" Define syntax region for the command 'define_always_on_cell'
+syn region upfCmd_define_always_on_cell contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"define_always_on_cell"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_define_always_on_cell,@tclOpts
+syn match upfCmd_define_always_on_cell contained "-\(cells\|power\|ground\|power_switchable\|ground_switchable\|isolated_pins\|enable\)\>"
+HiLink upfCmd_define_always_on_cell tclOption
+
+
+
+" Define syntax region for the command 'define_diode_clamp'
+syn region upfCmd_define_diode_clamp contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"define_diode_clamp"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_define_diode_clamp,@tclOpts
+syn match upfCmd_define_diode_clamp contained "-\(cells\|data_pins\|type\|power\|ground\)\>"
+HiLink upfCmd_define_diode_clamp tclOption
+
+
+
+" Define syntax region for the command 'define_isolation_cell'
+syn region upfCmd_define_isolation_cell contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"define_isolation_cell"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_define_isolation_cell,@tclOpts
+syn match upfCmd_define_isolation_cell contained "-\(cells\|power\|ground\|enable\|clamp_cell\|pin_groups\|no_enable\|always_on_pins\|aux_enables\|power_switchable\|ground_switchable\|valid_location\|non_dedicated\)\>"
+HiLink upfCmd_define_isolation_cell tclOption
+
+
+
+" Define syntax region for the command 'define_level_shifter_cell'
+syn region upfCmd_define_level_shifter_cell contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"define_level_shifter_cell"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_define_level_shifter_cell,@tclOpts
+syn match upfCmd_define_level_shifter_cell contained "-\(cells\|input_voltage_range\|output_voltage_range\|ground_input_voltage_range\|ground_output_voltage_range\|direction\|input_power_pin\|output_power_pin\|input_ground_pin\|output_ground_pin\|power\|ground\|enable\|pin_groups\|valid_location\|bypass_enable\|multi_stage\)\>"
+HiLink upfCmd_define_level_shifter_cell tclOption
+
+
+
+" Define syntax region for the command 'define_power_model'
+syn region upfCmd_define_power_model contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"define_power_model"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_define_power_model,@tclOpts
+syn match upfCmd_define_power_model contained "-\(for\)\>"
+HiLink upfCmd_define_power_model tclOption
+
+
+
+" Define syntax region for the command 'define_power_switch_cell'
+syn region upfCmd_define_power_switch_cell contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"define_power_switch_cell"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_define_power_switch_cell,@tclOpts
+syn match upfCmd_define_power_switch_cell contained "-\(cells\|type\|stage_1_enable\|stage_1_output\|power_switchable\|power\|ground_switchable\|ground\|stage_2_enable\|stage_2_output\|always_on_pins\|gate_bias_pin\)\>"
+HiLink upfCmd_define_power_switch_cell tclOption
+
+
+
+" Define syntax region for the command 'define_retention_cell'
+syn region upfCmd_define_retention_cell contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"define_retention_cell"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_define_retention_cell,@tclOpts
+syn match upfCmd_define_retention_cell contained "-\(cells\|power\|ground\|cell_type\|always_on_pins\|restore_function\|save_function\|restore_check\|save_check\|retention_check\|hold_check\|always_on_components\|power_switchable\|ground_switchable\)\>"
+HiLink upfCmd_define_retention_cell tclOption
+
+
+
+" Define syntax region for the command 'describe_state_transition'
+syn region upfCmd_describe_state_transition contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"describe_state_transition"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_describe_state_transition,@tclOpts
+syn match upfCmd_describe_state_transition contained "-\(object\|from\|to\|paired\|legal\|illegal\)\>"
+HiLink upfCmd_describe_state_transition tclOption
+
+
+
+" Define syntax region for the command 'end_power_model'
+syn region upfCmd_end_power_model contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"end_power_model"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_end_power_model,@tclOpts
+syn match upfCmd_end_power_model contained 
+HiLink upfCmd_end_power_model tclOption
+
+
+
+" Define syntax region for the command 'find_objects'
+syn region upfCmd_find_objects contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"find_objects"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_find_objects,@tclOpts
+syn match upfCmd_find_objects contained "-\(pattern\|object_type\|direction\|transitive\|regexp\|exact\|ignore_case\|non_leaf\|leaf_only\|traverse_macros\)\>"
+HiLink upfCmd_find_objects tclOption
+
+
+
+" Define syntax region for the command 'get_supply_net'
+syn region upfCmd_get_supply_net contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"get_supply_net"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_get_supply_net,@tclOpts
+syn match upfCmd_get_supply_net contained "-\(domain\|scope\)\>"
+HiLink upfCmd_get_supply_net tclOption
+
+
+
+" Define syntax region for the command 'load_simstate_behavior'
+syn region upfCmd_load_simstate_behavior contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"load_simstate_behavior"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_load_simstate_behavior,@tclOpts
+syn match upfCmd_load_simstate_behavior contained "-\(file\)\>"
+HiLink upfCmd_load_simstate_behavior tclOption
+
+
+
+" Define syntax region for the command 'load_upf'
+syn region upfCmd_load_upf contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"load_upf"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_load_upf,@tclOpts
+syn match upfCmd_load_upf contained "-\(scope\|hide_globals\|parameters\|version\)\>"
+HiLink upfCmd_load_upf tclOption
+
+
+
+" Define syntax region for the command 'load_upf_library'
+syn region upfCmd_load_upf_library contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"load_upf_library"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_load_upf_library,@tclOpts
+syn match upfCmd_load_upf_library contained 
+HiLink upfCmd_load_upf_library tclOption
+
+
+
+" Define syntax region for the command 'load_upf_protected'
+syn region upfCmd_load_upf_protected contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"load_upf_protected"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_load_upf_protected,@tclOpts
+syn match upfCmd_load_upf_protected contained "-\(hide_globals\|scope\|version\|params\)\>"
+HiLink upfCmd_load_upf_protected tclOption
+
+
+
+" Define syntax region for the command 'map_isolation_cell'
+syn region upfCmd_map_isolation_cell contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"map_isolation_cell"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_map_isolation_cell,@tclOpts
+syn match upfCmd_map_isolation_cell contained "-\(domain\|elements\|lib_cells\|lib_cell_type\|lib_model_name\|port\)\>"
+HiLink upfCmd_map_isolation_cell tclOption
+
+
+
+" Define syntax region for the command 'map_level_shifter_cell'
+syn region upfCmd_map_level_shifter_cell contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"map_level_shifter_cell"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_map_level_shifter_cell,@tclOpts
+syn match upfCmd_map_level_shifter_cell contained "-\(domain\|lib_cells\|elements\)\>"
+HiLink upfCmd_map_level_shifter_cell tclOption
+
+
+
+" Define syntax region for the command 'map_power_switch'
+syn region upfCmd_map_power_switch contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"map_power_switch"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_map_power_switch,@tclOpts
+syn match upfCmd_map_power_switch contained "-\(domain\|lib_cells\|port_map\)\>"
+HiLink upfCmd_map_power_switch tclOption
+
+
+
+" Define syntax region for the command 'map_repeater_cell'
+syn region upfCmd_map_repeater_cell contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"map_repeater_cell"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_map_repeater_cell,@tclOpts
+syn match upfCmd_map_repeater_cell contained "-\(domain\|elements\|exclude_elements\|lib_cells\)\>"
+HiLink upfCmd_map_repeater_cell tclOption
+
+
+
+" Define syntax region for the command 'map_retention_cell'
+syn region upfCmd_map_retention_cell contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"map_retention_cell"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_map_retention_cell,@tclOpts
+syn match upfCmd_map_retention_cell contained "-\(domain\|elements\|lib_cells\|lib_cell_type\|lib_model_name\|port\|exclude_elements\)\>"
+HiLink upfCmd_map_retention_cell tclOption
+
+
+
+" Define syntax region for the command 'map_retention_clamp_cell'
+syn region upfCmd_map_retention_clamp_cell contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"map_retention_clamp_cell"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_map_retention_clamp_cell,@tclOpts
+syn match upfCmd_map_retention_clamp_cell contained "-\(domain\|clock_clamp_lib_cells\|async_clamp_lib_cells\)\>"
+HiLink upfCmd_map_retention_clamp_cell tclOption
+
+
+
+" Define syntax region for the command 'merge_power_domains'
+syn region upfCmd_merge_power_domains contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"merge_power_domains"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_merge_power_domains,@tclOpts
+syn match upfCmd_merge_power_domains contained "-\(power_domains\|scope\|all_equivalent\)\>"
+HiLink upfCmd_merge_power_domains tclOption
+
+
+
+" Define syntax region for the command 'name_format'
+syn region upfCmd_name_format contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"name_format"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_name_format,@tclOpts
+syn match upfCmd_name_format contained "-\(isolation_prefix\|isolation_suffix\|level_shift_prefix\|level_shift_suffix\|implicit_supply_suffix\|implicit_logic_prefix\|implicit_logic_suffix\)\>"
+HiLink upfCmd_name_format tclOption
+
+
+
+" Define syntax region for the command 'save_upf'
+syn region upfCmd_save_upf contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"save_upf"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_save_upf,@tclOpts
+syn match upfCmd_save_upf contained "-\(scope\|version\)\>"
+HiLink upfCmd_save_upf tclOption
+
+
+
+" Define syntax region for the command 'set_correlated'
+syn region upfCmd_set_correlated contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"set_correlated"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_set_correlated,@tclOpts
+syn match upfCmd_set_correlated contained "-\(nets\|sets\)\>"
+HiLink upfCmd_set_correlated tclOption
+
+
+
+" Define syntax region for the command 'set_design_attributes'
+syn region upfCmd_set_design_attributes contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"set_design_attributes"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_set_design_attributes,@tclOpts
+syn match upfCmd_set_design_attributes contained "-\(elements\|exclude_elements\|models\|attribute\|is_leaf_cell\|is_macro_cell\|is_soft_macro\|is_hard_macro\|switch_cell_type\|transitive\)\>"
+HiLink upfCmd_set_design_attributes tclOption
+
+
+
+" Define syntax region for the command 'set_design_top'
+syn region upfCmd_set_design_top contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"set_design_top"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_set_design_top,@tclOpts
+syn match upfCmd_set_design_top contained 
+HiLink upfCmd_set_design_top tclOption
+
+
+
+" Define syntax region for the command 'set_domain_supply_net'
+syn region upfCmd_set_domain_supply_net contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"set_domain_supply_net"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_set_domain_supply_net,@tclOpts
+syn match upfCmd_set_domain_supply_net contained "-\(primary_power_net\|primary_ground_net\)\>"
+HiLink upfCmd_set_domain_supply_net tclOption
+
+
+
+" Define syntax region for the command 'set_equivalent'
+syn region upfCmd_set_equivalent contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"set_equivalent"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_set_equivalent,@tclOpts
+syn match upfCmd_set_equivalent contained "-\(function_only\|interchangeable\|nets\|sets\)\>"
+HiLink upfCmd_set_equivalent tclOption
+
+
+
+" Define syntax region for the command 'set_isolation'
+syn region upfCmd_set_isolation contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"set_isolation"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_set_isolation,@tclOpts
+syn match upfCmd_set_isolation contained "-\(domain\|elements\|exclude_elements\|isolation_power_net\|isolation_ground_net\|no_isolation\|force_isolation\|source\|sink\|use_equivalence\|use_functional_equivalence\|applies_to\|applies_to_clamp\|applies_to_sink_off_clamp\|applies_to_source_off_clamp\|applies_to_boundary\|location\|clamp_value\|isolation_supply_set\|isolation_signal\|isolation_sense\|name_prefix\|name_suffix\|sink_off_clamp\|source_off_clamp\|instance\|diff_supply_only\|transitive\|update\)\>"
+HiLink upfCmd_set_isolation tclOption
+
+
+
+" Define syntax region for the command 'set_isolation_control'
+syn region upfCmd_set_isolation_control contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"set_isolation_control"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_set_isolation_control,@tclOpts
+syn match upfCmd_set_isolation_control contained "-\(domain\|isolation_signal\|isolation_sense\|location\)\>"
+HiLink upfCmd_set_isolation_control tclOption
+
+
+
+" Define syntax region for the command 'set_level_shifter'
+syn region upfCmd_set_level_shifter contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"set_level_shifter"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_set_level_shifter,@tclOpts
+syn match upfCmd_set_level_shifter contained "-\(domain\|elements\|exclude_elements\|applies_to\|applies_to_boundary\|threshold\|rule\|location\|no_shift\|force_shift\|source\|sink\|use_equivalence\|use_functional_equivalence\|name_prefix\|name_suffix\|input_supply_set\|output_supply_set\|internal_supply_set\|instance\|transitive\|update\)\>"
+HiLink upfCmd_set_level_shifter tclOption
+
+
+
+" Define syntax region for the command 'set_partial_on_translation'
+syn region upfCmd_set_partial_on_translation contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"set_partial_on_translation"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_set_partial_on_translation,@tclOpts
+syn match upfCmd_set_partial_on_translation contained "-\(full_on_tools\|off_tools\)\>"
+HiLink upfCmd_set_partial_on_translation tclOption
+
+
+
+" Define syntax region for the command 'set_pin_related_supply'
+syn region upfCmd_set_pin_related_supply contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"set_pin_related_supply"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_set_pin_related_supply,@tclOpts
+syn match upfCmd_set_pin_related_supply contained "-\(pins\|related_power_pin\|related_ground_pin\)\>"
+HiLink upfCmd_set_pin_related_supply tclOption
+
+
+
+" Define syntax region for the command 'set_port_attributes'
+syn region upfCmd_set_port_attributes contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"set_port_attributes"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_set_port_attributes,@tclOpts
+syn match upfCmd_set_port_attributes contained "-\(ports\|exclude_ports\|domains\|exclude_domains\|elements\|exclude_elements\|model\|attribute\|clamp_value\|sink_off_clamp\|source_off_clamp\|receiver_supply\|driver_supply\|related_power_port\|related_ground_port\|related_bias_ports\|repeater_supply\|pg_type\|transitive\|applies_to\|feedthrough\|unconnected\|literal_supply\|is_isolated\|is_analog\)\>"
+HiLink upfCmd_set_port_attributes tclOption
+
+
+
+" Define syntax region for the command 'set_power_switch'
+syn region upfCmd_set_power_switch contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"set_power_switch"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_set_power_switch,@tclOpts
+syn match upfCmd_set_power_switch contained "-\(output_supply_port\|input_supply_port\|control_port\|supply_set\|on_state\|on_partial_state\|off_state\|error_state\)\>"
+HiLink upfCmd_set_power_switch tclOption
+
+
+
+" Define syntax region for the command 'set_related_supply_net'
+syn region upfCmd_set_related_supply_net contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"set_related_supply_net"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_set_related_supply_net,@tclOpts
+syn match upfCmd_set_related_supply_net contained "-\(object_list\|ground\|power\)\>"
+HiLink upfCmd_set_related_supply_net tclOption
+
+
+
+" Define syntax region for the command 'set_repeater'
+syn region upfCmd_set_repeater contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"set_repeater"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_set_repeater,@tclOpts
+syn match upfCmd_set_repeater contained "-\(domain\|elements\|exclude_elements\|source\|sink\|use_equivalence\|use_functional_equivalence\|applies_to\|applies_to_boundary\|repeater_supply_set\|name_prefix\|name_suffix\|instance\|update\)\>"
+HiLink upfCmd_set_repeater tclOption
+
+
+
+" Define syntax region for the command 'set_retention'
+syn region upfCmd_set_retention contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"set_retention"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_set_retention,@tclOpts
+syn match upfCmd_set_retention contained "-\(domain\|elements\|exclude_elements\|retention_power_net\|retention_ground_net\|retention_supply_set\|no_retention\|save_signal\|restore_signal\|save_condition\|restore_condition\|retention_condition\|use_retention_as_primary\|parameters\|instance\|transitive\|update\)\>"
+HiLink upfCmd_set_retention tclOption
+
+
+
+" Define syntax region for the command 'set_retention_control'
+syn region upfCmd_set_retention_control contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"set_retention_control"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_set_retention_control,@tclOpts
+syn match upfCmd_set_retention_control contained "-\(domain\|save_signal\|restore_signal\|assert_r_mutex\|assert_s_mutex\|assert_rs_mutex\)\>"
+HiLink upfCmd_set_retention_control tclOption
+
+
+
+" Define syntax region for the command 'set_retention_elements'
+syn region upfCmd_set_retention_elements contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"set_retention_elements"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_set_retention_elements,@tclOpts
+syn match upfCmd_set_retention_elements contained "-\(elements\|exclude_elements\|applies_to\|retention_purpose\|transitive\|expand\)\>"
+HiLink upfCmd_set_retention_elements tclOption
+
+
+
+" Define syntax region for the command 'set_scope'
+syn region upfCmd_set_scope contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"set_scope"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_set_scope,@tclOpts
+syn match upfCmd_set_scope contained 
+HiLink upfCmd_set_scope tclOption
+
+
+
+" Define syntax region for the command 'set_simstate_behavior'
+syn region upfCmd_set_simstate_behavior contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"set_simstate_behavior"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_set_simstate_behavior,@tclOpts
+syn match upfCmd_set_simstate_behavior contained "-\(lib\|model\|elements\|exclude_elements\)\>"
+HiLink upfCmd_set_simstate_behavior tclOption
+
+
+
+" Define syntax region for the command 'set_variation'
+syn region upfCmd_set_variation contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"set_variation"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_set_variation,@tclOpts
+syn match upfCmd_set_variation contained "-\(supply\|range\)\>"
+HiLink upfCmd_set_variation tclOption
+
+
+
+" Define syntax region for the command 'sim_assertion_control'
+syn region upfCmd_sim_assertion_control contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"sim_assertion_control"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_sim_assertion_control,@tclOpts
+syn match upfCmd_sim_assertion_control contained "-\(elements\|exclude_elements\|domain\|model\|controlling_domain\|control_expr\|type\|transitive\)\>"
+HiLink upfCmd_sim_assertion_control tclOption
+
+
+
+" Define syntax region for the command 'sim_corruption_control'
+syn region upfCmd_sim_corruption_control contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"sim_corruption_control"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_sim_corruption_control,@tclOpts
+syn match upfCmd_sim_corruption_control contained "-\(type\|elements\|exclude_elements\|model\|domain\|transitive\)\>"
+HiLink upfCmd_sim_corruption_control tclOption
+
+
+
+" Define syntax region for the command 'sim_replay_control'
+syn region upfCmd_sim_replay_control contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"sim_replay_control"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_sim_replay_control,@tclOpts
+syn match upfCmd_sim_replay_control contained "-\(elements\|exclude_elements\|model\|domain\|controlling_domain\|transitive\)\>"
+HiLink upfCmd_sim_replay_control tclOption
+
+
+
+" Define syntax region for the command 'upf_object_in_class'
+syn region upfCmd_upf_object_in_class contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"upf_object_in_class"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_upf_object_in_class,@tclOpts
+syn match upfCmd_upf_object_in_class contained "-\(class\)\>"
+HiLink upfCmd_upf_object_in_class tclOption
+
+
+
+" Define syntax region for the command 'upf_query_object_pathname'
+syn region upfCmd_upf_query_object_pathname contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"upf_query_object_pathname"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_upf_query_object_pathname,@tclOpts
+syn match upfCmd_upf_query_object_pathname contained "-\(relative_to\)\>"
+HiLink upfCmd_upf_query_object_pathname tclOption
+
+
+
+" Define syntax region for the command 'upf_query_object_properties'
+syn region upfCmd_upf_query_object_properties contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"upf_query_object_properties"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_upf_query_object_properties,@tclOpts
+syn match upfCmd_upf_query_object_properties contained "-\(property\)\>"
+HiLink upfCmd_upf_query_object_properties tclOption
+
+
+
+" Define syntax region for the command 'upf_query_object_type'
+syn region upfCmd_upf_query_object_type contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"upf_query_object_type"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_upf_query_object_type,@tclOpts
+syn match upfCmd_upf_query_object_type contained 
+HiLink upfCmd_upf_query_object_type tclOption
+
+
+
+" Define syntax region for the command 'upf_version'
+syn region upfCmd_upf_version contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"upf_version"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_upf_version,@tclOpts
+syn match upfCmd_upf_version contained 
+HiLink upfCmd_upf_version tclOption
+
+
+
+" Define syntax region for the command 'use_interface_cell'
+syn region upfCmd_use_interface_cell contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"use_interface_cell"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_use_interface_cell,@tclOpts
+syn match upfCmd_use_interface_cell contained "-\(strategy\|domain\|lib_cells\|map\|elements\|exclude_elements\|applies_to_clamp\|update_any\|force_function\|inverter_supply_set\)\>"
+HiLink upfCmd_use_interface_cell tclOption
+
+
+
+" Define syntax region for the command 'use_upf_library'
+syn region upfCmd_use_upf_library contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"use_upf_library"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_use_upf_library,@tclOpts
+syn match upfCmd_use_upf_library contained 
+HiLink upfCmd_use_upf_library tclOption
+
+
+
+" Define syntax region for the command 'query_upf'
+syn region upfCmd_query_upf contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"query_upf"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_query_upf,@tclOpts
+syn match upfCmd_query_upf contained "-\(pattern\|object_type\|inst_type\|direction\|transitive\|regexp\|exact\|ignore_case\|non_leaf\|leaf_only\)\>"
+HiLink upfCmd_query_upf tclOption
+
+
+
+" Define syntax region for the command 'query_associate_supply_set'
+syn region upfCmd_query_associate_supply_set contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"query_associate_supply_set"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_query_associate_supply_set,@tclOpts
+syn match upfCmd_query_associate_supply_set contained "-\(detailed\)\>"
+HiLink upfCmd_query_associate_supply_set tclOption
+
+
+
+" Define syntax region for the command 'query_bind_checker'
+syn region upfCmd_query_bind_checker contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"query_bind_checker"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_query_bind_checker,@tclOpts
+syn match upfCmd_query_bind_checker contained "-\(detailed\)\>"
+HiLink upfCmd_query_bind_checker tclOption
+
+
+
+" Define syntax region for the command 'query_cell_instances'
+syn region upfCmd_query_cell_instances contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"query_cell_instances"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_query_cell_instances,@tclOpts
+syn match upfCmd_query_cell_instances contained "-\(domain\)\>"
+HiLink upfCmd_query_cell_instances tclOption
+
+
+
+" Define syntax region for the command 'query_cell_mapped'
+syn region upfCmd_query_cell_mapped contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"query_cell_mapped"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_query_cell_mapped,@tclOpts
+syn match upfCmd_query_cell_mapped contained 
+HiLink upfCmd_query_cell_mapped tclOption
+
+
+
+" Define syntax region for the command 'query_composite_domain'
+syn region upfCmd_query_composite_domain contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"query_composite_domain"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_query_composite_domain,@tclOpts
+syn match upfCmd_query_composite_domain contained "-\(detailed\)\>"
+HiLink upfCmd_query_composite_domain tclOption
+
+
+
+" Define syntax region for the command 'query_design_attributes'
+syn region upfCmd_query_design_attributes contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"query_design_attributes"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_query_design_attributes,@tclOpts
+syn match upfCmd_query_design_attributes contained "-\(element\|model\|detailed\)\>"
+HiLink upfCmd_query_design_attributes tclOption
+
+
+
+" Define syntax region for the command 'query_hdl2upf_vct'
+syn region upfCmd_query_hdl2upf_vct contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"query_hdl2upf_vct"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_query_hdl2upf_vct,@tclOpts
+syn match upfCmd_query_hdl2upf_vct contained "-\(detailed\)\>"
+HiLink upfCmd_query_hdl2upf_vct tclOption
+
+
+
+" Define syntax region for the command 'query_isolation'
+syn region upfCmd_query_isolation contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"query_isolation"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_query_isolation,@tclOpts
+syn match upfCmd_query_isolation contained "-\(domain\|detailed\)\>"
+HiLink upfCmd_query_isolation tclOption
+
+
+
+" Define syntax region for the command 'query_isolation_control'
+syn region upfCmd_query_isolation_control contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"query_isolation_control"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_query_isolation_control,@tclOpts
+syn match upfCmd_query_isolation_control contained "-\(domain\|detailed\)\>"
+HiLink upfCmd_query_isolation_control tclOption
+
+
+
+" Define syntax region for the command 'query_level_shifter'
+syn region upfCmd_query_level_shifter contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"query_level_shifter"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_query_level_shifter,@tclOpts
+syn match upfCmd_query_level_shifter contained "-\(domain\|detailed\)\>"
+HiLink upfCmd_query_level_shifter tclOption
+
+
+
+" Define syntax region for the command 'query_map_isolation_cell'
+syn region upfCmd_query_map_isolation_cell contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"query_map_isolation_cell"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_query_map_isolation_cell,@tclOpts
+syn match upfCmd_query_map_isolation_cell contained "-\(domain\|detailed\)\>"
+HiLink upfCmd_query_map_isolation_cell tclOption
+
+
+
+" Define syntax region for the command 'query_map_level_shifter_cell'
+syn region upfCmd_query_map_level_shifter_cell contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"query_map_level_shifter_cell"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_query_map_level_shifter_cell,@tclOpts
+syn match upfCmd_query_map_level_shifter_cell contained "-\(domain\|detailed\)\>"
+HiLink upfCmd_query_map_level_shifter_cell tclOption
+
+
+
+" Define syntax region for the command 'query_map_power_switch'
+syn region upfCmd_query_map_power_switch contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"query_map_power_switch"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_query_map_power_switch,@tclOpts
+syn match upfCmd_query_map_power_switch contained "-\(detailed\)\>"
+HiLink upfCmd_query_map_power_switch tclOption
+
+
+
+" Define syntax region for the command 'query_map_retention_cell'
+syn region upfCmd_query_map_retention_cell contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"query_map_retention_cell"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_query_map_retention_cell,@tclOpts
+syn match upfCmd_query_map_retention_cell contained "-\(domain\|detailed\)\>"
+HiLink upfCmd_query_map_retention_cell tclOption
+
+
+
+" Define syntax region for the command 'query_name_format'
+syn region upfCmd_query_name_format contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"query_name_format"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_query_name_format,@tclOpts
+syn match upfCmd_query_name_format contained "-\(isolation_prefix\|isolation_suffix\|level_shift_prefix\|level_shift_suffix\|implicit_supply_prefix\|implicit_supply_suffix\|implicit_logic_prefix\|implicit_logic_suffix\|detailed\)\>"
+HiLink upfCmd_query_name_format tclOption
+
+
+
+" Define syntax region for the command 'query_net_ports'
+syn region upfCmd_query_net_ports contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"query_net_ports"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_query_net_ports,@tclOpts
+syn match upfCmd_query_net_ports contained "-\(transitive\|leaf\)\>"
+HiLink upfCmd_query_net_ports tclOption
+
+
+
+" Define syntax region for the command 'query_partial_on_translation'
+syn region upfCmd_query_partial_on_translation contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"query_partial_on_translation"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_query_partial_on_translation,@tclOpts
+syn match upfCmd_query_partial_on_translation contained 
+HiLink upfCmd_query_partial_on_translation tclOption
+
+
+
+" Define syntax region for the command 'query_pin_related_supply'
+syn region upfCmd_query_pin_related_supply contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"query_pin_related_supply"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_query_pin_related_supply,@tclOpts
+syn match upfCmd_query_pin_related_supply contained "-\(detailed\)\>"
+HiLink upfCmd_query_pin_related_supply tclOption
+
+
+
+" Define syntax region for the command 'query_port_attributes'
+syn region upfCmd_query_port_attributes contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"query_port_attributes"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_query_port_attributes,@tclOpts
+syn match upfCmd_query_port_attributes contained "-\(detailed\)\>"
+HiLink upfCmd_query_port_attributes tclOption
+
+
+
+" Define syntax region for the command 'query_port_direction'
+syn region upfCmd_query_port_direction contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"query_port_direction"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_query_port_direction,@tclOpts
+syn match upfCmd_query_port_direction contained 
+HiLink upfCmd_query_port_direction tclOption
+
+
+
+" Define syntax region for the command 'query_port_net'
+syn region upfCmd_query_port_net contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"query_port_net"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_query_port_net,@tclOpts
+syn match upfCmd_query_port_net contained "-\(conn\)\>"
+HiLink upfCmd_query_port_net tclOption
+
+
+
+" Define syntax region for the command 'query_port_state'
+syn region upfCmd_query_port_state contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"query_port_state"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_query_port_state,@tclOpts
+syn match upfCmd_query_port_state contained "-\(state\|detailed\)\>"
+HiLink upfCmd_query_port_state tclOption
+
+
+
+" Define syntax region for the command 'query_power_domain'
+syn region upfCmd_query_power_domain contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"query_power_domain"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_query_power_domain,@tclOpts
+syn match upfCmd_query_power_domain contained "-\(non_leaf\|all\|no_elements\|detailed\)\>"
+HiLink upfCmd_query_power_domain tclOption
+
+
+
+" Define syntax region for the command 'query_power_domain_element'
+syn region upfCmd_query_power_domain_element contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"query_power_domain_element"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_query_power_domain_element,@tclOpts
+syn match upfCmd_query_power_domain_element contained 
+HiLink upfCmd_query_power_domain_element tclOption
+
+
+
+" Define syntax region for the command 'query_power_state'
+syn region upfCmd_query_power_state contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"query_power_state"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_query_power_state,@tclOpts
+syn match upfCmd_query_power_state contained "-\(state\|detailed\)\>"
+HiLink upfCmd_query_power_state tclOption
+
+
+
+" Define syntax region for the command 'query_power_switch'
+syn region upfCmd_query_power_switch contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"query_power_switch"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_query_power_switch,@tclOpts
+syn match upfCmd_query_power_switch contained "-\(detailed\)\>"
+HiLink upfCmd_query_power_switch tclOption
+
+
+
+" Define syntax region for the command 'query_pst'
+syn region upfCmd_query_pst contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"query_pst"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_query_pst,@tclOpts
+syn match upfCmd_query_pst contained "-\(detailed\)\>"
+HiLink upfCmd_query_pst tclOption
+
+
+
+" Define syntax region for the command 'query_pst_state'
+syn region upfCmd_query_pst_state contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"query_pst_state"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_query_pst_state,@tclOpts
+syn match upfCmd_query_pst_state contained "-\(pst\|detailed\)\>"
+HiLink upfCmd_query_pst_state tclOption
+
+
+
+" Define syntax region for the command 'query_retention'
+syn region upfCmd_query_retention contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"query_retention"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_query_retention,@tclOpts
+syn match upfCmd_query_retention contained "-\(domain\|detailed\)\>"
+HiLink upfCmd_query_retention tclOption
+
+
+
+" Define syntax region for the command 'query_retention_control'
+syn region upfCmd_query_retention_control contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"query_retention_control"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_query_retention_control,@tclOpts
+syn match upfCmd_query_retention_control contained "-\(domain\|detailed\)\>"
+HiLink upfCmd_query_retention_control tclOption
+
+
+
+" Define syntax region for the command 'query_retention_elements'
+syn region upfCmd_query_retention_elements contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"query_retention_elements"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_query_retention_elements,@tclOpts
+syn match upfCmd_query_retention_elements contained "-\(detailed\)\>"
+HiLink upfCmd_query_retention_elements tclOption
+
+
+
+" Define syntax region for the command 'query_simstate_behavior'
+syn region upfCmd_query_simstate_behavior contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"query_simstate_behavior"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_query_simstate_behavior,@tclOpts
+syn match upfCmd_query_simstate_behavior contained "-\(lib\|model\|detailed\)\>"
+HiLink upfCmd_query_simstate_behavior tclOption
+
+
+
+" Define syntax region for the command 'query_state_transition'
+syn region upfCmd_query_state_transition contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"query_state_transition"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_query_state_transition,@tclOpts
+syn match upfCmd_query_state_transition contained "-\(object\|from\|to\|paired\|legal\|illegal\|detailed\)\>"
+HiLink upfCmd_query_state_transition tclOption
+
+
+
+" Define syntax region for the command 'query_supply_net'
+syn region upfCmd_query_supply_net contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"query_supply_net"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_query_supply_net,@tclOpts
+syn match upfCmd_query_supply_net contained "-\(domain\|is_supply\|detailed\)\>"
+HiLink upfCmd_query_supply_net tclOption
+
+
+
+" Define syntax region for the command 'query_supply_port'
+syn region upfCmd_query_supply_port contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"query_supply_port"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_query_supply_port,@tclOpts
+syn match upfCmd_query_supply_port contained "-\(domain\|is_supply\|detailed\)\>"
+HiLink upfCmd_query_supply_port tclOption
+
+
+
+" Define syntax region for the command 'query_supply_set'
+syn region upfCmd_query_supply_set contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"query_supply_set"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_query_supply_set,@tclOpts
+syn match upfCmd_query_supply_set contained "-\(detailed\|transitive\)\>"
+HiLink upfCmd_query_supply_set tclOption
+
+
+
+" Define syntax region for the command 'query_upf2hdl_vct'
+syn region upfCmd_query_upf2hdl_vct contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"query_upf2hdl_vct"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_query_upf2hdl_vct,@tclOpts
+syn match upfCmd_query_upf2hdl_vct contained "-\(detailed\)\>"
+HiLink upfCmd_query_upf2hdl_vct tclOption
+
+
+
+" Define syntax region for the command 'query_use_interface_cell'
+syn region upfCmd_query_use_interface_cell contained transparent matchgroup=upfPrimary keepend
+  \ start=+\<"query_use_interface_cell"\>+ matchgroup=NONE skip=+"\\$"+ end=+"}\|]\|;\|$\|--"+
+  \ contains=upfCmd_query_use_interface_cell,@tclOpts
+syn match upfCmd_query_use_interface_cell contained "-\(strategy\|domain\|detailed\)\>"
+HiLink upfCmd_query_use_interface_cell tclOption
+
+
 " ------------------- GENERATED REGION END   ----------------------------
 
 " -------------------------
