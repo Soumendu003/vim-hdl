@@ -1,2 +1,2 @@
-# vim-upf
-UPF syntax plugin for vim
+# vim-hdl
+UPF, Vtcl syntax plugin for vim
