@@ -4,7 +4,7 @@
 "              for further info. This syntax file is copied from vim's builtin tcl
 "              syntax file and extended further 
 " Maintainer:  Soumendu Ghorui <soumendu@verific.com>
-" URL:		
+" URL:	       https://github.com/Soumendu003/vim-hdl
 
 
 " -------------------------
