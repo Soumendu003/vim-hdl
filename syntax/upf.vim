@@ -234,7 +234,7 @@ HiLink upfCmd_connect_logic_net upfOption
 syn region tclPredicates contained transparent matchgroup=tclPrimary keepend
   \ start=+\<connect_supply_net\>+ matchgroup=NONE skip=+\\$+ end=+}\|]\|;\|$\|--+
   \ contains=@tclOpts,upfCmd_connect_supply_net
-syn match upfCmd_connect_supply_net contained "-\(ports\|pg_type\|vct\|cells\|domain\|pins\|rail_connection\|elements\)\>"
+syn match upfCmd_connect_supply_net contained "-\(ports\|pg_type\|vct\|cells\|domain\|pins\|rail_connection\|elements\|vcm\)\>"
 HiLink upfCmd_connect_supply_net upfOption
 
 
@@ -304,7 +304,7 @@ HiLink upfCmd_create_power_domain upfOption
 syn region tclPredicates contained transparent matchgroup=tclPrimary keepend
   \ start=+\<create_power_switch\>+ matchgroup=NONE skip=+\\$+ end=+}\|]\|;\|$\|--+
   \ contains=@tclOpts,upfCmd_create_power_switch
-syn match upfCmd_create_power_switch contained "-\(domain\|output_supply_port\|input_supply_port\|control_port\|on_state\|on_partial_state\|ack_port\|ack_delay\|off_state\|error_state\|supply_set\|instance\|update\|switch_type\)\>"
+syn match upfCmd_create_power_switch contained "-\(domain\|output_supply_port\|input_supply_port\|control_port\|on_state\|on_partial_state\|ack_port\|ack_delay\|off_state\|error_state\|supply_set\|instances\|update\|switch_type\)\>"
 HiLink upfCmd_create_power_switch upfOption
 
 
@@ -550,7 +550,7 @@ HiLink upfCmd_map_repeater_cell upfOption
 syn region tclPredicates contained transparent matchgroup=tclPrimary keepend
   \ start=+\<map_retention_cell\>+ matchgroup=NONE skip=+\\$+ end=+}\|]\|;\|$\|--+
   \ contains=@tclOpts,upfCmd_map_retention_cell
-syn match upfCmd_map_retention_cell contained "-\(domain\|elements\|lib_cells\|lib_cell_type\|lib_model_name\|port\|exclude_elements\)\>"
+syn match upfCmd_map_retention_cell contained "-\(domain\|elements\|lib_cells\|lib_cell_type\|lib_model_name\|port_map\|exclude_elements\)\>"
 HiLink upfCmd_map_retention_cell upfOption
 
 
@@ -638,7 +638,7 @@ HiLink upfCmd_set_equivalent upfOption
 syn region tclPredicates contained transparent matchgroup=tclPrimary keepend
   \ start=+\<set_isolation\>+ matchgroup=NONE skip=+\\$+ end=+}\|]\|;\|$\|--+
   \ contains=@tclOpts,upfCmd_set_isolation
-syn match upfCmd_set_isolation contained "-\(domain\|elements\|exclude_elements\|isolation_power_net\|isolation_ground_net\|no_isolation\|force_isolation\|source\|sink\|use_equivalence\|use_functional_equivalence\|applies_to\|applies_to_clamp\|applies_to_sink_off_clamp\|applies_to_source_off_clamp\|applies_to_boundary\|location\|clamp_value\|isolation_supply_set\|isolation_signal\|isolation_sense\|name_prefix\|name_suffix\|sink_off_clamp\|source_off_clamp\|instance\|diff_supply_only\|transitive\|update\)\>"
+syn match upfCmd_set_isolation contained "-\(domain\|elements\|exclude_elements\|isolation_power_net\|isolation_ground_net\|no_isolation\|force_isolation\|source\|sink\|use_equivalence\|use_functional_equivalence\|applies_to\|applies_to_clamp\|applies_to_sink_off_clamp\|applies_to_source_off_clamp\|applies_to_boundary\|location\|clamp_value\|isolation_supply\|isolation_signal\|isolation_sense\|name_prefix\|name_suffix\|sink_off_clamp\|source_off_clamp\|instance\|diff_supply_only\|transitive\|update\)\>"
 HiLink upfCmd_set_isolation upfOption
 
 
@@ -656,7 +656,7 @@ HiLink upfCmd_set_isolation_control upfOption
 syn region tclPredicates contained transparent matchgroup=tclPrimary keepend
   \ start=+\<set_level_shifter\>+ matchgroup=NONE skip=+\\$+ end=+}\|]\|;\|$\|--+
   \ contains=@tclOpts,upfCmd_set_level_shifter
-syn match upfCmd_set_level_shifter contained "-\(domain\|elements\|exclude_elements\|applies_to\|applies_to_boundary\|threshold\|rule\|location\|no_shift\|force_shift\|source\|sink\|use_equivalence\|use_functional_equivalence\|name_prefix\|name_suffix\|input_supply_set\|output_supply_set\|internal_supply_set\|instance\|transitive\|update\)\>"
+syn match upfCmd_set_level_shifter contained "-\(domain\|elements\|exclude_elements\|applies_to\|applies_to_boundary\|threshold\|rule\|location\|no_shift\|force_shift\|source\|sink\|use_equivalence\|use_functional_equivalence\|name_prefix\|name_suffix\|input_supply\|output_supply\|internal_supply\|instance\|transitive\|update\)\>"
 HiLink upfCmd_set_level_shifter upfOption
 
 
@@ -710,7 +710,7 @@ HiLink upfCmd_set_related_supply_net upfOption
 syn region tclPredicates contained transparent matchgroup=tclPrimary keepend
   \ start=+\<set_repeater\>+ matchgroup=NONE skip=+\\$+ end=+}\|]\|;\|$\|--+
   \ contains=@tclOpts,upfCmd_set_repeater
-syn match upfCmd_set_repeater contained "-\(domain\|elements\|exclude_elements\|source\|sink\|use_equivalence\|use_functional_equivalence\|applies_to\|applies_to_boundary\|repeater_supply_set\|name_prefix\|name_suffix\|instance\|update\)\>"
+syn match upfCmd_set_repeater contained "-\(domain\|elements\|exclude_elements\|source\|sink\|use_functional_equivalence\|applies_to\|applies_to_boundary\|repeater_supply\|name_prefix\|name_suffix\|instance\|update\)\>"
 HiLink upfCmd_set_repeater upfOption
 
 
@@ -718,8 +718,8 @@ HiLink upfCmd_set_repeater upfOption
 " Define syntax region for the command 'set_retention'
 syn region tclPredicates contained transparent matchgroup=tclPrimary keepend
   \ start=+\<set_retention\>+ matchgroup=NONE skip=+\\$+ end=+}\|]\|;\|$\|--+
-  \ contains=@tclOpts,upfCmd_set_retention,tclVarName
-syn match upfCmd_set_retention contained "-\(domain\|elements\|exclude_elements\|retention_power_net\|retention_ground_net\|retention_supply_set\|no_retention\|save_signal\|restore_signal\|save_condition\|restore_condition\|retention_condition\|use_retention_as_primary\|parameters\|instance\|transitive\|update\)\>"
+  \ contains=@tclOpts,upfCmd_set_retention
+syn match upfCmd_set_retention contained "-\(domain\|elements\|exclude_elements\|retention_power_net\|retention_ground_net\|retention_supply\|no_retention\|save_signal\|restore_signal\|save_event_condition\|restore_event_condition\|powerdown_period_condition\|use_retention_as_primary\|parameters\|instance\|transitive\|update\|applies_to\|async_set_reset_effect\|restore_period_condition\)\>"
 HiLink upfCmd_set_retention upfOption
 
 
@@ -753,7 +753,7 @@ syn region tclPredicates contained transparent matchgroup=tclPrimary keepend
 syn region tclPredicates contained transparent matchgroup=tclPrimary keepend
   \ start=+\<set_simstate_behavior\>+ matchgroup=NONE skip=+\\$+ end=+}\|]\|;\|$\|--+
   \ contains=@tclOpts,upfCmd_set_simstate_behavior
-syn match upfCmd_set_simstate_behavior contained "-\(lib\|model\|elements\|exclude_elements\)\>"
+syn match upfCmd_set_simstate_behavior contained "-\(lib\|models\|elements\|exclude_elements\)\>"
 HiLink upfCmd_set_simstate_behavior upfOption
 
 
@@ -839,7 +839,7 @@ syn region tclPredicates contained transparent matchgroup=tclPrimary keepend
 syn region tclPredicates contained transparent matchgroup=tclPrimary keepend
   \ start=+\<use_interface_cell\>+ matchgroup=NONE skip=+\\$+ end=+}\|]\|;\|$\|--+
   \ contains=@tclOpts,upfCmd_use_interface_cell
-syn match upfCmd_use_interface_cell contained "-\(strategy\|domain\|lib_cells\|map\|elements\|exclude_elements\|applies_to_clamp\|update_any\|force_function\|inverter_supply_set\)\>"
+syn match upfCmd_use_interface_cell contained "-\(strategy\|domain\|lib_cells\|port_map\|elements\|exclude_elements\|applies_to_clamp\|update_any\|force_function\|inverter_supply_set\)\>"
 HiLink upfCmd_use_interface_cell upfOption
 
 
